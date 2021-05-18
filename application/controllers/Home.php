@@ -78,7 +78,7 @@ class Home extends CI_Controller {
         $data['navbar'] = $this->load->view('template/navbar',NULL,TRUE);
         //$data['footer'] = $this->load->view('template/footer',NULL,TRUE);
     
-        $this->load->view('pages/admin_barang.php',$data);
+        $this->load->view('pages/admin_order.php',$data);
     }
 
 }

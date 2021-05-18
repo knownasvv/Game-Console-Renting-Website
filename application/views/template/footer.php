@@ -1,6 +1,21 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<style>
+.footer{
+    position: fixed;
+    left: 0;
+    bottom : 0;
+    width: 100%;
+}
+</style>
 
 <footer id="footer" class="footer" class="footer-1">
+<section class="py-3" style="background-color: #fff;">
+		<div class="container-fluid">
+			<div class="container">
+			<h5> ABOUT US </h5>
+			</div>
+		</div>
+	</section>
 	<div class="main-footer widgets-dark typo-dark">
 		<div class="container">
 			<div class="row text-center">

@@ -153,15 +153,9 @@
 			</div>
 		</div>
 	</section >
-	<section class="py-3" style="background-color: #fff;">
-		<div class="container-fluid">
-			<div class="container">
-			<h5> ABOUT US </h5>
-			</div>
-
-		</div>
-	</section>
+	<div style="margin:150px">
 	<?php echo $footer; ?>
+	</div>
 	<?php echo $script; ?>
 </body>
 </html>
