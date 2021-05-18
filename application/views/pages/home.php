@@ -156,7 +156,56 @@
 	<section class="py-3" style="background-color: #fff;">
 		<div class="container-fluid">
 			<div class="container">
-			<h5> ABOUT US </h5>
+			<h5 style="text-align:center"> ABOUT US </h5>
+			<div class="row justify-content-center">
+            <div data-aos="zoom-out">
+                <div class="col-12 mb-3">
+                    <div class="card pt-3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">This website is made by</h5><hr>
+                            <div class="row row-cols-4 row-cols-md-2 g-4">
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="<?php echo base_url("assets/images/profile/koco.jpg") ?>" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Wahyu Koco</h5>
+                                        <p class="card-text">00000040112</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="<?php echo base_url("assets/images/profile/veren.png") ?>" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Veren Valensia</h5>
+                                        <p class="card-text">00000040923</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="<?php echo base_url("assets/images/profile/vincent.jpg") ?>" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Vincent Christopher</h5>
+                                        <p class="card-text">00000040754</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="<?php echo base_url("assets/images/profile/feiza.png") ?>" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h5 class="card-title">Feiza Joane</h5>
+                                        <p class="card-text">00000040118</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 			</div>
 		</div>
 	</section>
