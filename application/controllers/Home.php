@@ -21,8 +21,9 @@ class Home extends CI_Controller {
         $crud->set_table('barang')
             ->columns('nama','harga','deskripsi','gambar')
             //->set_relation('Rating','rating','code')
+			->callback_column('gambar', array($this, 'img_size'))
             ->fields('nama','harga','deskripsi','gambar')
-            //->set_field_upload('Gambar','assets/uploads/gambar')
+            ->set_field_upload('gambar','assets/images/konsol')
             ->callback_edit_field('deskripsi',array($this,'edit_description'))
             ->callback_add_field('deskripsi',array($this,'add_description'));
         
@@ -34,7 +35,11 @@ class Home extends CI_Controller {
         $data['navbar'] = $this->load->view('template/navbar',NULL,TRUE);
         //$data['footer'] = $this->load->view('template/footer',NULL,TRUE);
     
-        $this->load->view('pages/admin.php',$data);
+        $this->load->view('pages/admin_barang.php',$data);
+    }
+	function img_size($value){
+        $tes = base_url('/assets/images/konsol/');
+        return "<img src='$tes$value' width='100px'> </img>";
     }
     function edit_description($value,$primary_key){
         return "<textarea name='deskripsi'> $value </textarea>";

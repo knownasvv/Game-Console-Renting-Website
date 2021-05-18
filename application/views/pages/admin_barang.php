@@ -5,7 +5,10 @@
 	<?php echo $style; ?>
 	<?php echo $script; ?>
 </head>
-<body>
+<body
+	style="
+		background: url(<?php echo base_url('assets/images/background/home.jpg')?>) no-repeat fixed center; 
+		background-size: cover;">
 	
 	<?php echo $navbar; ?>
 	<div class="row" style="margin-top: 100px;">
