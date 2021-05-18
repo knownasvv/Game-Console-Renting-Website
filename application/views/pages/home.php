@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 	<title> GeekHouse </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+=======
+	<title> Rental </title>
+>>>>>>> 714595e9ed18045d84927da6def789d5c4b846b8
 	<?php echo $style; ?>
 	<style>
 		.rectangle{

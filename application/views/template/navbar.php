@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 
+<<<<<<< HEAD
 <section>
 <header>
 	<div class="container">
@@ -23,6 +24,12 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#"> Rental </a>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo base_url('index.php/Home/admin_barang')?>">Admin_barang</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo base_url('index.php/Home/admin_order')?>">Admin_order</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
