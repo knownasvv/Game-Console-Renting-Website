@@ -48,4 +48,32 @@ class Home extends CI_Controller {
         return "<textarea name='deskripsi'> </textarea> ";
     }
 
+	public function admin_order(){
+        $this->load->library('grocery_CRUD');
+        $crud=new grocery_CRUD();
+        $crud->set_table('orders')
+            ->columns('id_order','id_keranjang','status_pemesanan')
+            ->field_type('status_pemesanan', 'dropdown', array(
+                '1' => 'Sedang Dikirim', 
+                '2' => 'Sudah Dikirim', 
+                '3' => 'Siap di Pick-up',
+                '4' => 'Selesai'
+            ))
+			//->callback_column('gambar', array($this, 'img_size'))
+            ->fields('id_order','id_keranjang','status_pemesanan')
+            //->set_field_upload('gambar','assets/images/konsol')
+            ->callback_edit_field('deskripsi',array($this,'edit_description'))
+            ->callback_add_field('deskripsi',array($this,'add_description'));
+        
+        $output= $crud->render();
+        $data['crud'] = get_object_vars($output);
+    
+        $data['style'] = $this->load->view('include/style',$data,TRUE);
+        $data['script'] = $this->load->view('include/script',$data,TRUE);
+        $data['navbar'] = $this->load->view('template/navbar',NULL,TRUE);
+        //$data['footer'] = $this->load->view('template/footer',NULL,TRUE);
+    
+        $this->load->view('pages/admin_barang.php',$data);
+    }
+
 }
