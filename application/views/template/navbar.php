@@ -1,7 +1,4 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
-
-<<<<<<< HEAD
 <section>
 <header>
 	<div class="container">
@@ -17,7 +14,7 @@
 		<div class="navbar-collapse collapse w-100" id="collapsing">
 			<ul class="navbar-nav">
 				<li class="nav-item active">
-					<a class="nav-link" href="#"> Home </a>
+					<a class="nav-link" href="<?php echo base_url('')?>"> Home </a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#"> About </a>
@@ -26,10 +23,10 @@
 					<a class="nav-link" href="#"> Rental </a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('index.php/Home/admin_barang')?>">Admin_barang</a>
+					<a class="nav-link" href="<?php echo base_url('index.php/Home/admin_barang')?>">Admin_barang</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('index.php/Home/admin_order')?>">Admin_order</a>
+					<a class="nav-link" href="<?php echo base_url('index.php/Home/admin_order')?>">Admin_order</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
