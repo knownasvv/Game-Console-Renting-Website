@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Code Igniter MVC </title>
+	<title> Rental </title>
 	<?php echo $style; ?>
 </head>
 <body 

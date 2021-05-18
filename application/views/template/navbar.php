@@ -72,6 +72,7 @@ nav.shift ul li a:hover:after {
       <li><a href="#">Home</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Rental</a></li>
+      <li><a href="<?php echo base_url('index.php/Home/admin_barang')?>">Admin_barang</a></li>
     </ul>
   </nav>
 		</div>
