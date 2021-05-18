@@ -97,7 +97,7 @@
 <body
 	style="
 		background: url(<?php echo base_url('assets/images/background/home.jpg')?>) no-repeat fixed center; 
-		background-size: cover;">
+		background-size: cover; margin-bottom:240px;" >
 	
 	<?php echo $navbar; ?>
 	<section>
@@ -153,9 +153,14 @@
 			</div>
 		</div>
 	</section >
-	<div style="margin:150px">
+	<section class="py-3" style="background-color: #fff;">
+		<div class="container-fluid">
+			<div class="container">
+			<h5> ABOUT US </h5>
+			</div>
+		</div>
+	</section>
 	<?php echo $footer; ?>
-	</div>
 	<?php echo $script; ?>
 </body>
 </html>
