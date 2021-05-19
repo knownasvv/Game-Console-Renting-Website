@@ -104,7 +104,8 @@
 		<div class="container-fluid text-center p-5 rectangle">
 			Welcome To<br>
 			<img src="<?php echo base_url('assets/images/logo/light.png') ?>" alt="Geeks House" height="100rem"><br/>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur impedit similique, aut cum voluptatum molestiae expedita vel repellendus blanditiis hic sit commodi tenetur nihil id illum, cumque maiores ad repellat.
+			Our product is all original and very cheap! In this website, you can rent some of our console games with a cheap price.
+			<br> we have a product like nintendo, sega, sony, and xbox. feel free to explore!
 		</div>
 	</section>
 	<section class="py-3" style="background-color: rgb(146,220,229);">
