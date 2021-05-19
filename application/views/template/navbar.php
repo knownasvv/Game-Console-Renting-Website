@@ -2,7 +2,20 @@
 <section>
 <header>
 	<div class="container">
-		Summarecon Mall Serpong 082121
+		<div class="row" style="font-size:16px">
+			<div class="col-sm-3">
+				<i class="fa fa-map-marker" aria-hidden="true"></i>
+				Summarecon Mall Serpong
+			</div>
+			<div class="col-sm-2">
+				<i class="fa fa-phone" aria-hidden="true"></i>
+				(021)6446-0008
+			</div>
+			<div class="col-sm-2">
+				<i class="fa fa-instagram" aria-hidden="true"></i>
+				@geekhouse!
+			</div>
+		</div>
 	</div>
 </header>
 <nav class="navbar navbar-expand-md shift">

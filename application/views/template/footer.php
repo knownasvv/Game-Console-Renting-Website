@@ -1,6 +1,15 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<style>
+.footer{
+    position: fixed;
+    left: 0;
+    bottom : 0;
+    width: 100%;
+}
+</style>
 
 <footer id="footer" class="footer" class="footer-1">
+	
 	<div class="main-footer widgets-dark typo-dark">
 		<div class="container">
 			<div class="row text-center">
@@ -17,8 +26,8 @@
 					<div class="widget no-box">
 						<h6 class="widget-title">Visit Us<span></span></h6>
 						<ul class="thumbnail-widget">
-							<li><div class="thumb-content">Jl. Dolor Sit Amet. Blok XX.</div></li>
-							<li><div class="thumb-content">Summarecon Serpong</div></li>
+							<li><div class="thumb-content">Jl. Scientia Boulevard, Curug Sangereng, Tangerang, Banten 15810.</div></li>
+							<li><div class="thumb-content">Summarecon Gading Serpong</div></li>
 						</ul>
 					</div>
 				</div>
