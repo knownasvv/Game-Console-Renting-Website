@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>"/>
+<link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.css'); ?>"/>
 <?php if(isset($crud)) 
 	foreach ($crud['css_files'] as $file): ?>
 	<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
@@ -13,11 +14,7 @@ h1, h2, h3, h4, h5, h6, p, section, body{
 	padding: 0;
 }
 
-body{
-	margin:0;
-   padding:0;
-   height:100%;
-}
+body{ margin:0; padding:0; height:100%; }
 
 header{
 	top: 0px;
@@ -43,10 +40,7 @@ nav div ul li a, nav ul li a:after, nav ul li a:before { transition: all .5s; }
 nav div ul li a:hover { color: #fff; }
 
 /* SHIFT */
-nav.shift div ul li a {
-	position: relative;
-	z-index: 1;
-}
+nav.shift div ul li a { position: relative; z-index: 1; }
 nav.shift div ul li a:hover { color: rgb(43,45,66); }
 nav.shift div ul li a:after {
 	display: block;
@@ -65,11 +59,7 @@ nav.shift div ul li a:after {
 	opacity: 0;
 	z-index: -1;
 }
-nav.shift div ul li a:hover:after {
-	opacity: 1;
-	visibility: visible;
-	height: 100%;
-}
+nav.shift div ul li a:hover:after { opacity: 1; visibility: visible; height: 100%; }
 </style>
 
 <!-- FOOTER -->
