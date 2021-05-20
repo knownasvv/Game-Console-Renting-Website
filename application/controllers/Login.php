@@ -43,7 +43,7 @@ class Login extends CI_Controller {
                     else if($salt == "admin"){
                         $_SESSION['name'] = $cekUser[0]['nama'];
                         $_SESSION['salt'] = "admin";
-                        redirect(base_url());
+                        redirect(base_url('index.php/admin/admin_barang'));
                     }
                 } 
                 else{
