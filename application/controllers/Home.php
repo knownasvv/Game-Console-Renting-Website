@@ -21,7 +21,6 @@ class Home extends CI_Controller {
 		
 		$data['barang'] = $this->barang->ShowData();
 		
-
 		$this->load->view('pages/home', $data);
 	}
 
@@ -106,5 +105,6 @@ class Home extends CI_Controller {
     
         $this->load->view('pages/admin_order.php',$data);
     }
+
 
 }
