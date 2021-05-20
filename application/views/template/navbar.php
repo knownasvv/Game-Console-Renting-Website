@@ -26,20 +26,25 @@
 		</button>
 		<div class="navbar-collapse collapse w-100" id="collapsing">
 			<ul class="navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="<?php echo base_url('')?>"> Home </a>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url()?>"> Home </a>
+				</li>
+				<?php if(isset($title)) if($title == "Home") { ?>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url("#rental")?>"> Rental </a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url("#about")?>"> About </a>
+					</li>
+				<?php }?>
+				<li class="nav-item">
+					<a class="nav-link" href="<?php echo base_url("index.php/Home/keranjang")?>"> Cart </a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"> About </a>
+					<a class="nav-link" href="<?php echo base_url('index.php/Home/admin_barang')?>">A_barang</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#"> Rental </a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url('index.php/Home/admin_barang')?>">Admin_barang</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url('index.php/Home/admin_order')?>">Admin_order</a>
+					<a class="nav-link" href="<?php echo base_url('index.php/Home/admin_order')?>">A_order</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav ml-auto w-100 justify-content-end">

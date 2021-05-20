@@ -14,5 +14,11 @@ class Barang extends CI_Model{
 
 		return $query->result_array();
 	}
+
+	public function ShowDetails($id) {
+		$query = $this->db->query("SELECT * FROM barang WHERE id_barang = '$id'");
+
+		return $query->result_array();
+	}
 }
 
