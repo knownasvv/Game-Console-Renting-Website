@@ -40,12 +40,15 @@
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url("index.php/Home/keranjang") ?>"> Cart </a>
 					</li>
+					<?php if(isset($_SESSION['salt']) && $_SESSION['salt']== "admin"){ ?>
+
 					<li class="nav-item">
-						<a class="nav-link" href="<?php echo base_url('index.php/Home/admin_barang') ?>">A_barang</a>
+						<a class="nav-link" href="<?php echo base_url('index.php/admin/admin_barang') ?>">A_barang</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="<?php echo base_url('index.php/Home/admin_order') ?>">A_order</a>
+						<a class="nav-link" href="<?php echo base_url('index.php/admin/admin_order') ?>">A_order</a>
 					</li>
+					<?php } ?>
 				</ul>
 				<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
 					<?php if (isset($_SESSION['name'])) { ?>
@@ -57,7 +60,7 @@
 						</li>
 					<?php } else { ?>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Login</a>
+							<a class="nav-link" href="<?php echo base_url("index.php/login") ?>">Login</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Sign Up</a>
