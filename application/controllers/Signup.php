@@ -44,7 +44,7 @@ class Signup extends CI_Controller{
             }else{
                 $lastId = $this->user->getLastId();
                 $lastId = $lastId[0]['id_user'];
-                $this->user->insertUser($lastId+1, $_POST['email'], $_POST['password'], $_POST['nama'], $_POST['alamat'], $_POST['notelp']);
+                $this->user->insertUser($lastId+1, $_POST['email'], md5($_POST['password']."user"), $_POST['nama'], $_POST['alamat'], $_POST['notelp']);
                 redirect(base_url('index.php/login'));
             }
         }
