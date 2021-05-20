@@ -41,7 +41,7 @@
             <br> <br>
                 you dont have account?
                 Register now. <br><br><br><br><br><br><br><br><br><br><br>
-                <button class="btn btn-primary">Register</button>
+                <a href="<?php echo base_url("index.php/signup")?>"><button class="btn btn-primary">Register</button></a>
             </div>
         </div>
     </div>
