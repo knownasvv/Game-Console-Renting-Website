@@ -6,6 +6,7 @@ class Home extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('barang');
+        $this->load->model('admin_model');
 	}
 
 	// FRONT-END
@@ -48,6 +49,7 @@ class Home extends CI_Controller {
 	public function admin_barang(){
         $this->load->library('grocery_CRUD');
         $crud=new grocery_CRUD();
+        $crud->set_theme('datatables');
         $crud->set_table('barang')
             ->columns('nama','harga','deskripsi','gambar')
             //->set_relation('Rating','rating','code')
@@ -78,9 +80,10 @@ class Home extends CI_Controller {
         return "<textarea name='deskripsi'> </textarea> ";
     }
 
-	public function admin_order(){
+	public function admin_order1(){
         $this->load->library('grocery_CRUD');
         $crud=new grocery_CRUD();
+        $crud->set_theme('datatables');
         $crud->set_table('orders')
             ->columns('id_order','id_keranjang','status_pemesanan')
             ->field_type('status_pemesanan', 'dropdown', array(
@@ -106,5 +109,31 @@ class Home extends CI_Controller {
         $this->load->view('pages/admin_order.php',$data);
     }
 
+    public function admin_order(){
+        $data['style'] = $this->load->view('include/style',NULL,TRUE);
+        $data['script'] = $this->load->view('include/script',NULL,TRUE);
+        $data['navbar'] = $this->load->view('template/navbar',NULL,TRUE);
+        $data['order'] = $this->admin_model->get_order();
+        $data['user'] = $this->admin_model->get_user();
+        $data['keranjang'] = $this->admin_model->get_keranjang();
+        $data['detail'] = $this->admin_model->get_detail();
+        $data['barang'] = $this->admin_model->get_barang();
+        $this->load->view('pages/admin_order.php',$data);
+    }
 
+    public function change1(){
+        $id=$_GET['id'];
+        $this->admin_model->change1($id);
+        redirect(base_url('index.php/home/admin_order'));
+    }
+    public function change2(){
+        $id=$_GET['id'];
+        $this->admin_model->change2($id);
+        redirect(base_url('index.php/home/admin_order'));
+    }
+    public function change3(){
+        $id=$_GET['id'];
+        $this->admin_model->change3($id);
+        redirect(base_url('index.php/home/admin_order'));
+    }
 }
