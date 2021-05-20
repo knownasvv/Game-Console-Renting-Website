@@ -63,7 +63,7 @@
 							<a class="nav-link" href="<?php echo base_url("index.php/login") ?>">Login</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Sign Up</a>
+							<a class="nav-link" href="<?php echo base_url("index.php/signup") ?>">Sign Up</a>
 						</li>
 					<?php } ?>
 				</ul>

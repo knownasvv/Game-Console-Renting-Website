@@ -17,5 +17,14 @@ class User extends CI_Model{
         $query = $this->db->query("SELECT salt FROM users WHERE email = '$email'");
         return $query->result_array();
     }
+
+    public function insertUser($id, $email,  $pass, $nama, $alamat, $notelp){
+        $query = $this->db->query("INSERT INTO users VALUES ('$id', '$email', '$pass', '$nama', '$alamat', '$notelp', 'user')");
+    }
+
+    public function getLastId(){
+        $query = $this->db->query("SELECT * FROM users order by Id_user DESC limit 1");
+        return $query->result_array();
+    }
 }
 

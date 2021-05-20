@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="en" >
 
 <head>
     <meta charset="UTF-8">
@@ -10,16 +10,17 @@
     <?php echo $script; ?>
 </head>
 
-<body>
+<body style="
+		background: url(<?php echo base_url('assets/images/background/home.jpg')?>) no-repeat fixed center; 
+		background-size: cover; margin-bottom:240px;" >
     <?php echo $navbar; ?>
-    <div class="container" style="display: flex; align-items:center;">
-        <div class="col-sm-6">
-            <div class="row align-items-center">
+    <div class="container" >
+        <div class="row align-items-center" style="height: 350px;">
+            <div class="col-sm-6" style="background:rgba(254, 37, 37, 0.86) ;">
                 <form action="<?php echo base_url("index.php/Login/validate") ?>" method="POST">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" name="email" class="form-control" required placeholder="Enter email">
-
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
@@ -36,11 +37,12 @@
                     <?php    } ?>
                 </form>
             </div>
-        </div>
-        <div class="col-sm-6">
-            you dont have account?
-            Register now. <br>
-            <button class="btn btn-primary">Register</button>
+            <div class="col-sm-6" style="background-color:rgba(154, 253, 73, 0.83)">
+            <br> <br>
+                you dont have account?
+                Register now. <br><br><br><br><br><br><br><br><br><br><br>
+                <button class="btn btn-primary">Register</button>
+            </div>
         </div>
     </div>
 
