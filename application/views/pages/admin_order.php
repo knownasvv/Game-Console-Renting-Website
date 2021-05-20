@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Rental </title>
+    <title> Admin-order </title>
 	<?php echo $style; ?>
 	<?php echo $script; ?>
 </head>
