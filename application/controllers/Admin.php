@@ -66,16 +66,16 @@ class Admin extends CI_Controller{
     public function change1(){
         $id=$_GET['id'];
         $this->admin_model->change1($id);
-        redirect(base_url('index.php/home/admin_order'));
+        redirect(base_url('index.php/admin/admin_order'));
     }
     public function change2(){
         $id=$_GET['id'];
         $this->admin_model->change2($id);
-        redirect(base_url('index.php/home/admin_order'));
+        redirect(base_url('index.php/admin/admin_order'));
     }
     public function change3(){
         $id=$_GET['id'];
         $this->admin_model->change3($id);
-        redirect(base_url('index.php/home/admin_order'));
+        redirect(base_url('index.php/admin/admin_order'));
     }
 }

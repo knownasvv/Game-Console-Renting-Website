@@ -73,17 +73,17 @@ style="
                                     echo "<td style='text-align: center; vertical-align: middle;'>".$status1."</td>";
 
                                     echo "<td style='text-align: center; vertical-align: middle;'>";
-                                    echo "<a href='".base_url("index.php/Home/change1?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
+                                    echo "<a href='".base_url("index.php/Admin/change1?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
                                     echo "<button class='btn btn-danger'>";
                                     echo "<span>Sedang dikirim</span>";
                                     echo "</button>";
                                     echo "</a>";
-                                    echo "<a href='".base_url("index.php/Home/change2?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
+                                    echo "<a href='".base_url("index.php/Admin/change2?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
                                     echo "<button class='btn btn-success'>";
                                     echo "<span>Sudah Dikirim</span>";
                                     echo "</button>";
                                     echo "</a>";
-                                    echo "<a href='".base_url("index.php/Home/change3?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
+                                    echo "<a href='".base_url("index.php/Admin/change3?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
                                     echo "<button class='btn btn-secondary'>";
                                     echo "<span>Selesai</span>";
                                     echo "</button>";
