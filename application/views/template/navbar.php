@@ -45,10 +45,10 @@
 					<?php } ?>
 					<?php if(isset($_SESSION['salt']) && $_SESSION['salt']== "user") {?>
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url("index.php/Home/keranjang") ?>"> Cart </a>
+							<a class="nav-link a-effect" href="<?php echo base_url("index.php/Home/keranjang") ?>"> Cart </a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url("index.php/user/orderlist") ?>"> Order </a>
+							<a class="nav-link a-effect" href="<?php echo base_url("index.php/user/orderlist") ?>"> Order </a>
 						</li>
 					<?php } ?>
 
