@@ -47,6 +47,11 @@ class Home extends CI_Controller {
 
 		$data['barang'] = $this->barang->ShowDetails($id);
 		
+		if($_SESSION['salt'] == 'user'){ 
+			$this->load->model('user_model');
+			$keranjang = $this->user_model->get_keranjang($_SESSION['id_user']);
+			$data['keranjang'] = $this->user_model->get_detail_keranjang($keranjang[0]['id_keranjang']);
+		}
 
 		$this->load->view('pages/detail', $data);
 	}

@@ -62,9 +62,27 @@
         
                     <!-- ADD TO CART -->
                     <div class="section" style="padding-bottom:20px;">
-                       	<a href="<?php echo base_url('index.php/Home/AddToCart/'.$b['id_barang'])?>">
-							<button class="btn btn-success"><span style="margin-right:20px" class="fa fa-shopping-cart" aria-hidden="true"></span> Add to Cart</button>
-					  	 </a>
+						<!-- Cek keranjang user -->
+						<?php 
+							$sudah_dipesan = FALSE;
+							if(isset($keranjang)) {
+								foreach($keranjang as $k) {
+									if($k['id_barang'] == $b['id_barang']) $sudah_dipesan = TRUE;
+								} 
+							}
+						?>
+						<!-- Barang sudah di keranjang -->
+						<?php if($sudah_dipesan) { ?>
+							<button class="btn btn-success fa fa-check-square disabled"><span style="margin-right:20px" aria-hidden="true"></span> In Cart</button>
+						<?php } else if($b['stok'] > 0) {?>
+							<!-- Ada stok barang -->
+							<a href="<?= base_url('index.php/user/addToCart/'.$b['id_barang']);?>">
+								<button class="btn btn-success fa fa-shopping-cart"><span style="margin-right:20px" aria-hidden="true"></span> Add to Cart</button>
+							</a>
+						<!-- No stok -->
+						<?php } else if($b['stok'] <= 0) {?>
+							<button class="btn btn-danger fa fa-times-circle disabled"><span style="margin-right:20px" aria-hidden="true"></span> Out of Stock</button>
+						<?php } ?>
                     </div>                                        
                 </div>          
             </div>
