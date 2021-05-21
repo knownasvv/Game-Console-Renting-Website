@@ -12,7 +12,6 @@ class Login extends CI_Controller {
 
     public function index(){
         $data['title'] = "Login";
-
 		$title['title'] = $data['title'];
 
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
@@ -36,11 +35,13 @@ class Login extends CI_Controller {
                 $cekUser = $this->user_model->getUser($email,$password);
                 if($cekUser){
                     if($salt == "user"){
+						$_SESSION['id_user'] = $cekUser[0]['id_user'];
                         $_SESSION['name'] = $cekUser[0]['nama'];
                         $_SESSION['salt'] = "user";
                         redirect(base_url());
                     }
                     else if($salt == "admin"){
+						$_SESSION['id_admin'] = $cekUser[0]['id_user'];
                         $_SESSION['name'] = $cekUser[0]['nama'];
                         $_SESSION['salt'] = "admin";
                         redirect(base_url('index.php/admin/admin_barang'));

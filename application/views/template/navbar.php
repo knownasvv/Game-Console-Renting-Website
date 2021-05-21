@@ -21,12 +21,12 @@
 	<nav class="navbar navbar-expand-md shift" 
 		style="background: <?php 
 		if (isset($title)) if ($title == "Home") echo 'rgba(34,34,34, 0.8); ';
-		else echo 'linear-gradient(180deg, rgba(52,58,64,0.7822479333530288) 14%, rgba(0,0,0,0.46011908181241246) 56%, rgba(255,255,255,0) 100%); ';
+		else if($title != "Home" || !isset($title))echo 'linear-gradient(180deg, rgba(52,58,64,0.7822479333530288) 14%, rgba(0,0,0,0.46011908181241246) 56%, rgba(255,255,255,0) 100%); ';
 	?> ">
 		<div class="container">
 			<a href="<?php echo base_url();?>" class="navbar-brand d-flex mr-auto"><img src="<?php echo base_url('assets/images/logo/light.png') ?>" alt="Geeks House" height="55rem"></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsing" style="color: white;">
-				≡
+			<button class="navbar-toggler text-white" data-toggle="collapse" data-target="#collapsing">
+				 ≡ 
 				<!-- <span class="navbar-toggler-icon"></span> -->
 			</button>
 			<div class="navbar-collapse collapse w-100" id="collapsing">
@@ -45,7 +45,7 @@
 					<?php } ?>
 					<?php if(isset($_SESSION['salt']) && $_SESSION['salt']== "user") {?>
 						<li class="nav-item">
-							<a class="nav-link a-effect" href="<?php echo base_url("index.php/Home/keranjang") ?>"> Cart </a>
+							<a class="nav-link a-effect" href="<?php echo base_url("index.php/user/cart") ?>"> Cart </a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link a-effect" href="<?php echo base_url("index.php/user/orderlist") ?>"> Order </a>
