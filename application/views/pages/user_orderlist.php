@@ -37,9 +37,11 @@ style="
 										$harga=$row3['harga'];
 									}
 								}
+								$base=base_url("/assets/images/konsol/$gambar");
+								
 								echo "<div class='col-1'>$count</div>";
 								echo '<div class="col-2" style="padding:0">';
-									echo "<img src='http://localhost/UAS_Teori/assets/images/konsol/$gambar' width='200px' height='200px'>";
+									echo "<img src='$base' width='200px' height='200px'>";
 								echo "</div>";
 								echo '<div class="col-9 align-middle">';
 									echo "<h5 style='font-weight:bold'>$nama_b</h5>";
