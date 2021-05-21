@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Signup extends CI_Controller{
     public function __construct() {
 		parent::__construct();
-        $this->load->model("user");
+        $this->load->model("user_model");
     }
 
     public function index(){
@@ -42,9 +42,9 @@ class Signup extends CI_Controller{
             if($this->form_validation->run() == false){
                 $this->load->view('pages/signup',$data);
             }else{
-                $lastId = $this->user->getLastId();
+                $lastId = $this->user_model->getLastId();
                 $lastId = $lastId[0]['id_user'];
-                $this->user->insertUser($lastId+1, $_POST['email'], md5($_POST['password']."user"), $_POST['nama'], $_POST['alamat'], $_POST['notelp']);
+                $this->user_model->insertUser($lastId+1, $_POST['email'], md5($_POST['password']."user"), $_POST['nama'], $_POST['alamat'], $_POST['notelp']);
                 redirect(base_url('index.php/login'));
             }
         }

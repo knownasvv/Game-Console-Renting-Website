@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
     public function __construct() {
 		parent::__construct();
-        $this->load->model('user');
+        $this->load->model('user_model');
         if(!isset($_SESSION)){ 
             session_start(); 
         } 
@@ -28,12 +28,12 @@ class Login extends CI_Controller {
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $salt = $this->user->getSalt($email);
+            $salt = $this->user_model->getSalt($email);
             //cek User
             if(count($salt) != 0){
                 $salt = $salt[0]['salt'];
                 $password = md5($password.$salt);
-                $cekUser = $this->user->getUser($email,$password);
+                $cekUser = $this->user_model->getUser($email,$password);
                 if($cekUser){
                     if($salt == "user"){
                         $_SESSION['name'] = $cekUser[0]['nama'];

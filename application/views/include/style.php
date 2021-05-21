@@ -29,7 +29,12 @@ header{
 	border: 1px solid #707070;
 	opacity: 0.8;
 }
-
+hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 1);
+}
 nav{ background: linear-gradient(180deg, rgba(52,58,64,0.7822479333530288) 14%, rgba(0,0,0,0.46011908181241246) 56%, rgba(255,255,255,0) 100%); }
 nav div ul li a {
 	padding: 15px;

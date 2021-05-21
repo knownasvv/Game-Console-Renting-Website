@@ -29,6 +29,7 @@
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url() ?>"> Home </a>
 					</li>
+
 					<?php if (isset($title)) if ($title == "Home") { ?>
 						<li class="nav-item">
 							<a class="nav-link" href="<?php echo base_url("#rental") ?>"> Rental </a>
@@ -37,11 +38,17 @@
 							<a class="nav-link" href="<?php echo base_url("#about") ?>"> About </a>
 						</li>
 					<?php } ?>
+					
+					<?php if(isset($_SESSION['salt']) && $_SESSION['salt']== "user"){ ?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url("index.php/Home/keranjang") ?>"> Cart </a>
 					</li>
-					<?php if(isset($_SESSION['salt']) && $_SESSION['salt']== "admin"){ ?>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url("index.php/user/orderlist") ?>"> Order </a>
+					</li>
+					<?php } ?>
 
+					<?php if(isset($_SESSION['salt']) && $_SESSION['salt']== "admin"){ ?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url('index.php/admin/admin_barang') ?>">A_barang</a>
 					</li>
@@ -49,6 +56,7 @@
 						<a class="nav-link" href="<?php echo base_url('index.php/admin/admin_order') ?>">A_order</a>
 					</li>
 					<?php } ?>
+				</ul>
 				</ul>
 				<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
 					<?php if (isset($_SESSION['name'])) { ?>

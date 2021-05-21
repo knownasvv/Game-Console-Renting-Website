@@ -22,10 +22,10 @@ class Admin extends CI_Controller{
         $crud=new grocery_CRUD();
         $crud->set_theme('datatables');
         $crud->set_table('barang')
-            ->columns('nama','harga','deskripsi','gambar')
+            ->columns('nama','harga','deskripsi','gambar','stok','kategori')
             //->set_relation('Rating','rating','code')
 			->callback_column('gambar', array($this, 'img_size'))
-            ->fields('nama','harga','deskripsi','gambar')
+            ->fields('nama','harga','deskripsi','gambar','stok','kategori')
             ->set_field_upload('gambar','assets/images/konsol')
             ->callback_edit_field('deskripsi',array($this,'edit_description'))
             ->callback_add_field('deskripsi',array($this,'add_description'));
@@ -63,11 +63,6 @@ class Admin extends CI_Controller{
         $this->load->view('pages/admin_order.php',$data);
     }
 
-    public function change1(){
-        $id=$_GET['id'];
-        $this->admin_model->change1($id);
-        redirect(base_url('index.php/admin/admin_order'));
-    }
     public function change2(){
         $id=$_GET['id'];
         $this->admin_model->change2($id);
