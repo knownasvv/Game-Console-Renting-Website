@@ -48,6 +48,18 @@ style="
 									echo "</div>";
 									echo "<div class='col-12'><br></div>";
 								}
+								$base=base_url("/assets/images/konsol/$gambar");
+								
+								echo "<div class='col-1'>$count</div>";
+								echo '<div class="col-2" style="padding:0">';
+									echo "<img src='$base' width='200px' height='200px'>";
+								echo "</div>";
+								echo '<div class="col-9 align-middle">';
+									echo "<h5 style='font-weight:bold'>$nama_b</h5>";
+									echo "<p>$desk</p>";
+									echo "<p>Harga Rental : Rp.$harga</p>";
+								echo "</div>";
+								echo "<div class='col-12'><br></div>";
 							}
 							foreach($order as $row4){ //order
 								if($id_k==$row4['id_keranjang']){

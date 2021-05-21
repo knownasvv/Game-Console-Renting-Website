@@ -46,7 +46,7 @@ class User_model extends CI_Model{
     public function getUser($email,$password){
         $query = $this->db->query("SELECT * FROM users WHERE email = '$email' AND `password` = '$password' ");
         return $query->result_array();
-    }  
+    }
     
     public function getSalt($email){
         $query = $this->db->query("SELECT salt FROM users WHERE email = '$email'");
