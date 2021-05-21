@@ -30,13 +30,12 @@ header{
 	opacity: 0.8;
 }
 
-nav{ background:
-	<?php 
-		if (isset($title)) if ($title == "Home") echo 'rgb(34,34,34); ';
-		else echo 'background: linear-gradient(180deg, rgba(52,58,64,0.7822479333530288) 14%, rgba(0,0,0,0.46011908181241246) 56%, rgba(255,255,255,0) 100%); }';
-	?>
+hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 1);
 }
-
 .a-effect {
 	padding: 15px;
 	text-decoration: none;

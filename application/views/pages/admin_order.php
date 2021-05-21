@@ -74,41 +74,41 @@ style="
                                             }
                                         }
                                     }
-                                    //pembuatan tabel
-                                    if($status == 1){ $status1 = "Sedang Dikirim"; }
-									else if($status == 2){ $status1 = "Sudah Dikirim"; }
-									else if($status == 3){ $status1 = "Siap di Pick-up"; }
-									else if($status == 4){ $status1 = "Selesai"; }
-
-                                    echo "<tr>";
-										echo "<td class='text-center align-middle'>".$id_o."</td>";
-										echo "<td class='text-center align-middle'>".$nama_b."</td>";
-										echo "<td class='text-center align-middle'>".$nama_u."</td>";
-										echo "<td class='text-center align-middle'>".$lama_peminjaman."</td>";
-										echo "<td class='text-center align-middle'>".$status1."</td>";
-
-										echo "<td>";
-											echo "<a href='".base_url("index.php/Admin/change1?id=$id_o")."'class='mr-1' style=';color:rgb(0,200,255);'>";
-												echo "<button class='btn btn-danger'>";
-												echo "<span>Sedang dikirim</span>";
-												echo "</button>";
-											echo "</a>";
-
-											echo "<a href='".base_url("index.php/Admin/change2?id=$id_o")."'class='mr-1' style='color:rgb(0,200,255);'>";
-												echo "<button class='btn btn-success'>";
-												echo "<span>Sudah Dikirim</span>";
-												echo "</button>";
-											echo "</a>";
-
-											echo "<a href='".base_url("index.php/Admin/change3?id=$id_o")."'style='color:rgb(0,200,255);'>";
-												echo "<button class='btn btn-secondary'>";
-												echo "<span>Selesai</span>";
-												echo "</button>";
-											echo "</a>";
-										echo "</td>";
-                                    echo "</tr>";
                                 }
                             }
+							//pembuatan tabel
+							if($status == 1){ $status1 = "Sedang Dikirim"; }
+							else if($status == 2){ $status1 = "Sudah Dikirim"; }
+							else if($status == 3){ $status1 = "Siap di Pick-up"; }
+							else if($status == 4){ $status1 = "Selesai"; }
+
+							echo "<tr>";
+								echo "<td class='text-center align-middle'>".$id_o."</td>";
+								echo "<td class='text-center align-middle'>".$nama_b."</td>";
+								echo "<td class='text-center align-middle'>".$nama_u."</td>";
+								echo "<td class='text-center align-middle'>".$lama_peminjaman."</td>";
+								echo "<td class='text-center align-middle'>".$status1."</td>";
+
+								echo "<td class='text-center align-middle'>";
+									if($status==1){
+										echo "<a href='".base_url("index.php/Admin/change2?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
+										echo "<button class='btn btn-success'>";
+										echo "<span>Sudah Dikirim</span>";
+										echo "</button>";
+										echo "</a>";
+									}else if($status==3){
+										echo "<a href='".base_url("index.php/Admin/change3?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
+										echo "<button class='btn btn-secondary'>";
+										echo "<span>Selesai</span>";
+										echo "</button>";
+										echo "</a>";
+									}else if($status==2){
+										echo "<p > Menunggu konfirmasi pick-up dari pelanggan </p>";
+									}else if($status==4){
+										echo "<p style='color:green'> Transaksi telah selesai </p>";
+									}
+								echo "</td>";
+							echo "</tr>";
                         }
                 }
             }
