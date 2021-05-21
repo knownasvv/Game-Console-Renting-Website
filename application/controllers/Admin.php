@@ -32,10 +32,13 @@ class Admin extends CI_Controller{
         
         $output= $crud->render();
         $data['crud'] = get_object_vars($output);
-    
+		
         $data['style'] = $this->load->view('include/style',$data,TRUE);
         $data['script'] = $this->load->view('include/script',$data,TRUE);
-        $data['navbar'] = $this->load->view('template/navbar',NULL,TRUE);
+
+		$data['title'] = "Admin Barang";
+		$title['title'] = $data['title'];
+        $data['navbar'] = $this->load->view('template/navbar',$title,TRUE);
         //$data['footer'] = $this->load->view('template/footer',NULL,TRUE);
     
         $this->load->view('pages/admin_barang.php',$data);
@@ -54,7 +57,10 @@ class Admin extends CI_Controller{
     public function admin_order(){
         $data['style'] = $this->load->view('include/style',NULL,TRUE);
         $data['script'] = $this->load->view('include/script',NULL,TRUE);
-        $data['navbar'] = $this->load->view('template/navbar',NULL,TRUE);
+
+		$data['title'] = "Admin Order";
+		$title['title'] = $data['title'];
+        $data['navbar'] = $this->load->view('template/navbar',$title,TRUE);
         $data['order'] = $this->admin_model->get_order();
         $data['user'] = $this->admin_model->get_user();
         $data['keranjang'] = $this->admin_model->get_keranjang();

@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Admin-order </title>
+    <title> <?php echo $title;?> </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<?php echo $style; ?>
+	<!-- RESPONSIVE DATATBLES -->
+	<link href="https://cdn.datatables.net/fixedheader/3.1.8/css/fixedHeader.dataTables.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css" rel="stylesheet">
 	<?php echo $script; ?>
+	<!-- RESPONSIVE DATATBLES -->
+	<script src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+	<style>
+		th, tr, td{
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
 </head>
 <body
 style="
@@ -11,21 +25,26 @@ style="
 		background-size: cover; margin-bottom:240px;" >
     <?php echo $navbar; ?>
     <script>
-    $(document).ready(function() {
-        $('#table').DataTable();
-    } );
+     $(document).ready( function () {
+        var table = $('#table').DataTable( {
+            responsive: true
+        } );
+
+        new $.fn.dataTable.FixedHeader($table);
+     });
 	</script>
 
-	<div class="container" style="box-shadow: 0px 10px 20px 0 rgba(255, 255, 255, 1);background-color:rgba(255,255,255, 0.9);padding-top:10px">
-	<table id="table" class="table table-bordered table-hover table-striped" style="background-color:white">
+	<div class="container pb-3 pt-5 my-3" style="box-shadow: 0px 10px 20px 0 rgba(255, 255, 255, 1);background-color:rgba(255,255,255, 0.9);">
+	<h1 class="text-center">LIST ORDER</h1>
+	<table id="table" class="table table-bordered table-hover table-striped w-100" style="background-color:white">
 		<thead>
 			<tr>
-				<th class='align-center align-middle'> ID Order </th>
-				<th class='align-center align-middle'> Nama Barang </th>
-                <th class='align-center align-middle'> Nama Pemesan </th>
-				<th class='align-center align-middle'> Lama Peminjaman </th>
-				<th class='align-center align-middle'> Status Pemesanan </th>
-                <th class='align-center align-middle'> Action </th>
+				<th> ID Order </th>
+				<th> Nama Barang </th>
+                <th> Nama Pemesan </th>
+				<th> Lama Peminjaman </th>
+				<th> Status Pemesanan </th>
+                <th> Action </th>
 			</tr>
 		</thead>
 		<tbody>
@@ -62,29 +81,29 @@ style="
 									else if($status == 4){ $status1 = "Selesai"; }
 
                                     echo "<tr>";
-										echo "<td class='align-center align-middle'>".$id_o."</td>";
-										echo "<td class='align-center align-middle'>".$nama_b."</td>";
-										echo "<td class='align-center align-middle'>".$nama_u."</td>";
-										echo "<td class='align-center align-middle'>".$lama_peminjaman."</td>";
-										echo "<td class='align-center align-middle'>".$status1."</td>";
+										echo "<td class='text-center align-middle'>".$id_o."</td>";
+										echo "<td class='text-center align-middle'>".$nama_b."</td>";
+										echo "<td class='text-center align-middle'>".$nama_u."</td>";
+										echo "<td class='text-center align-middle'>".$lama_peminjaman."</td>";
+										echo "<td class='text-center align-middle'>".$status1."</td>";
 
-										echo "<td class='align-center align-middle'>";
-											echo "<a href='".base_url("index.php/Admin/change1?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
-											echo "<button class='btn btn-danger'>";
-											echo "<span>Sedang dikirim</span>";
-											echo "</button>";
+										echo "<td>";
+											echo "<a href='".base_url("index.php/Admin/change1?id=$id_o")."'class='mr-1' style=';color:rgb(0,200,255);'>";
+												echo "<button class='btn btn-danger'>";
+												echo "<span>Sedang dikirim</span>";
+												echo "</button>";
 											echo "</a>";
 
-											echo "<a href='".base_url("index.php/Admin/change2?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
-											echo "<button class='btn btn-success'>";
-											echo "<span>Sudah Dikirim</span>";
-											echo "</button>";
+											echo "<a href='".base_url("index.php/Admin/change2?id=$id_o")."'class='mr-1' style='color:rgb(0,200,255);'>";
+												echo "<button class='btn btn-success'>";
+												echo "<span>Sudah Dikirim</span>";
+												echo "</button>";
 											echo "</a>";
 
-											echo "<a href='".base_url("index.php/Admin/change3?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
-											echo "<button class='btn btn-secondary'>";
-											echo "<span>Selesai</span>";
-											echo "</button>";
+											echo "<a href='".base_url("index.php/Admin/change3?id=$id_o")."'style='color:rgb(0,200,255);'>";
+												echo "<button class='btn btn-secondary'>";
+												echo "<span>Selesai</span>";
+												echo "</button>";
 											echo "</a>";
 										echo "</td>";
                                     echo "</tr>";
@@ -97,12 +116,12 @@ style="
 		</tbody>
 		<tfoot>
 			<tr>
-                <th class="align-center align-middle"> ID Order </th>
-				<th class="align-center align-middle"> Nama Barang </th>
-                <th class="align-center align-middle"> Nama Pemesan </th>
-				<th class="align-center align-middle"> Lama Peminjaman </th>
-				<th class="align-center align-middle"> Status Pemesanan </th>
-                <th class="align-center align-middle"> Action </th>
+                <th> ID Order </th>
+				<th> Nama Barang </th>
+                <th> Nama Pemesan </th>
+				<th> Lama Peminjaman </th>
+				<th> Status Pemesanan </th>
+                <th> Action </th>
 			</tr>
 		</tfoot>
 	</table>

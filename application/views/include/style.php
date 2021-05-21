@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
-
 <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome/css/all.css'); ?>"/>
+
 <?php if(isset($crud)) 
 	foreach ($crud['css_files'] as $file): ?>
 	<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
@@ -30,8 +30,14 @@ header{
 	opacity: 0.8;
 }
 
-nav{ background: linear-gradient(180deg, rgba(52,58,64,0.7822479333530288) 14%, rgba(0,0,0,0.46011908181241246) 56%, rgba(255,255,255,0) 100%); }
-nav div ul li a {
+nav{ background:
+	<?php 
+		if (isset($title)) if ($title == "Home") echo 'rgb(34,34,34); ';
+		else echo 'background: linear-gradient(180deg, rgba(52,58,64,0.7822479333530288) 14%, rgba(0,0,0,0.46011908181241246) 56%, rgba(255,255,255,0) 100%); }';
+	?>
+}
+
+.a-effect {
 	padding: 15px;
 	text-decoration: none;
 	color: #F1F1F1;
@@ -39,13 +45,13 @@ nav div ul li a {
 	text-transform: uppercase;
 	margin: 0 5px;
 }
-nav div ul li a, nav ul li a:after, nav ul li a:before { transition: all .5s; }
-nav div ul li a:hover { color: #fff; }
+a.a-effect, a.a-effect:after, a.a-effect:before { transition: all .5s; }
+a.a-effect:hover { color: #fff; }
 
 /* SHIFT */
-nav.shift div ul li a { position: relative; z-index: 1; }
-nav.shift div ul li a:hover { color: rgb(43,45,66); }
-nav.shift div ul li a:after {
+nav.shift a.a-effect{ position: relative; z-index: 1; }
+nav.shift a.a-effect:hover { color: rgb(43,45,66); }
+nav.shift a.a-effect:after {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -62,7 +68,7 @@ nav.shift div ul li a:after {
 	opacity: 0;
 	z-index: -1;
 }
-nav.shift div ul li a:hover:after { opacity: 1; visibility: visible; height: 100%; }
+nav.shift a.a-effect:hover:after { opacity: 1; visibility: visible; height: 100%; }
 </style>
 
 <!-- FOOTER -->

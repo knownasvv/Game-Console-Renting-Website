@@ -8,7 +8,7 @@
 	<style>
 		.rectangle{
 			width: 100%;
-			background: #222222 0% 0% no-repeat padding-box;
+			background: rgb(34,34,34);
 			opacity: 0.8;
 			color: white;
 			margin: 0;
@@ -34,17 +34,21 @@
 	
 	<?php echo $navbar; ?>
 	<section id="home">
-		<div class="container-fluid text-center p-5 rectangle">
-			Welcome To<br>
-			<img src="<?php echo base_url('assets/images/logo/light.png') ?>" alt="Geeks House" height="100rem"><br/>
-			Our product is all original and very cheap! In this website, you can rent some of our console games with a cheap price.
-			<br> we have a product like nintendo, sega, sony, and xbox. feel free to explore!
+		<div class="container-fluid text-center py-5 rectangle">
+			<br/><br/><br/>
+			<h1>Welcome To</h1><br>
+			<img src="<?php echo base_url('assets/images/logo/light.png') ?>" alt="Geeks House" class="img-fluid" height="100rem"><br/>
+			<p class="lead">
+				Our product is all original and very cheap! In this website, you can rent some of our console games with a cheap price.
+				<br> we have a product like nintendo, sega, sony, and xbox. feel free to explore!
+			</p>
+			<br/><br/><br/>
 		</div>
 	</section>
-	<section class="py-3" id="rental" style="background-color: rgb(146,220,229);">
+	<section class="py-5" id="rental" style="background-color: rgb(146,220,229);">
 		<div class="container-fluid">
 			<div class="container">
-				<h5 class="text-center mb-3"> RENTAL </h5>
+				<h5 class="text-center mb-3"> RENTAL </h5><hr>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
@@ -108,13 +112,13 @@
 			</div>
 		</div>
 	</section >
-	<section class="py-3" id="about" style="background-color: #fff;">
+	<section class="py-5" id="about" style="background-color: #fff;">
 		<div class="container-fluid">
 			<div class="container">
-				<h5 style="text-align:center"> ABOUT US </h5>
+				<h5 style="text-align:center"> ABOUT US </h5><hr>
 				<div class="row justify-content-center text-center px-3 pb-4">
 					<div class="col-12 mb-3">
-						<h6 class="card-title mt-5">This website is made by</h6><hr>
+						<h6 class="card-title mt-1">This website is made by</h6>
 						<div class="row row-cols-4 row-cols-md-2 g-4">
 							<div class="col">
 								<div class="card">

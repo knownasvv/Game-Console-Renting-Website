@@ -8,8 +8,7 @@ class Signup extends CI_Controller{
     }
 
     public function index(){
-        $data['title'] = "Home";
-
+        $data['title'] = "Sign Up";
 		$title['title'] = $data['title'];
 
 		$data['style'] = $this->load->view('include/style', NULL, TRUE);
@@ -22,7 +21,7 @@ class Signup extends CI_Controller{
 
     public function validate(){
         if(isset($_POST['submit'])){
-            $data['title'] = "Home";
+            $data['title'] = "Sign Up";
     
             $title['title'] = $data['title'];
     
@@ -52,3 +51,4 @@ class Signup extends CI_Controller{
 
 
 }
+

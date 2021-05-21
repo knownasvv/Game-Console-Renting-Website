@@ -11,7 +11,7 @@ class Login extends CI_Controller {
     }
 
     public function index(){
-        $data['title'] = "Home";
+        $data['title'] = "Login";
 
 		$title['title'] = $data['title'];
 
