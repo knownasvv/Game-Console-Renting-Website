@@ -15,6 +15,8 @@ class Signup extends CI_Controller{
 		$data['script'] = $this->load->view('include/script', NULL, TRUE);
 		$data['navbar'] = $this->load->view('template/navbar', $title, TRUE);
 		$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
+        $data['loginStyle'] = $this->load->view('include/loginStyle',NULL,TRUE);
+        $data['loginScript'] = $this->load->view('include/loginScript',NULL,TRUE);
 		
         $this->load->view('pages/signup', $data);
     }
@@ -29,6 +31,8 @@ class Signup extends CI_Controller{
             $data['script'] = $this->load->view('include/script', NULL, TRUE);
             $data['navbar'] = $this->load->view('template/navbar', $title, TRUE);
             $data['footer'] = $this->load->view('template/footer', NULL, TRUE);
+            $data['loginStyle'] = $this->load->view('include/loginStyle',NULL,TRUE);
+            $data['loginScript'] = $this->load->view('include/loginScript',NULL,TRUE);
             $this->load->helper(array('form','url'));
             $this->load->library('form_validation');
 
