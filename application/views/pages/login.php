@@ -46,14 +46,6 @@
     <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-                <!-- Back to Home -->
-                <div class="row col-12" style="top:-75px">
-                <i class="fa fa-long-arrow-left btn btn-info" aria-hidden="true">
-                    <a href="<?= base_url()?>" style="color:black"> Home</a>
-                </i>
-                </div>
-                <!-- end -->
-
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="<?= base_url('assets/loginAssets/images/img-01.png')?>" alt="IMG">
 				</div>
