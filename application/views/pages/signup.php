@@ -97,10 +97,11 @@
 
 
                     <div class="text-center p-t-136">
-                        <a class="txt2" href="#">
-                            Create your Account
+                        <p class="txt2">Have an account?
+                        <a class="txt2" href="<?= base_url('index.php/login')?>">
+                            Login.
                             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                        </a>
+                        </a> </p>
                     </div>
                     <?php echo form_close() ?>
 
