@@ -35,6 +35,12 @@ class User_model extends CI_Model{
 
         return $query->result_array();
     }
+	function get_keranjang_where_status_barang_gantung($id_user = null) {
+		if($id_user == null) $query = $this->db->query("SELECT * FROM keranjang WHERE status_barang = 'Gantung' ORDER BY id_keranjang ASC");
+        else $query = $this->db->query("SELECT * FROM keranjang WHERE id_user = '$id_user' AND status_barang = 'Gantung' ORDER BY id_keranjang ASC");
+
+        return $query->result_array();
+	}
 	function add_keranjang($id, $user) {
 		$query = $this->db->query("INSERT INTO keranjang VALUES('$user', '$id', 1, 'Gantung')");
 	}
