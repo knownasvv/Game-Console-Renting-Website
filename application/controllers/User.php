@@ -20,7 +20,7 @@ class User extends CI_Controller{
 		$data['order'] = $this->user_model->get_order();
         $data['user'] = $this->user_model->get_user();
         $data['keranjang'] = $this->user_model->get_keranjang();
-        $data['detail'] = $this->user_model->get_detail();
+        $data['detail'] = $this->user_model->get_detail_keranjang();
         $data['barang'] = $this->user_model->get_barang();
 		$this->load->view('pages/user_orderlist.php',$data);
 	}
@@ -38,20 +38,19 @@ class User extends CI_Controller{
 				$barang = $this->user_model->get_barang($id)[0];
 				$keranjang_user = $this->user_model->get_keranjang($_SESSION['id_user']);
 				if($barang['stok'] >= 1) {
-					$this->session->set_flashdata('addToCart', "success");
-					$this->session->set_flashdata('nama_barang', $barang['nama']);
-					
 					if(!is_null($keranjang_user[0])){
-						$this->user_model->add_detail_keranjang($keranjang_user[0]['id_keranjang'], $barang['id_barang']);;
+						$this->user_model->add_detail_keranjang($keranjang_user[0]['id_keranjang'], $barang['id_barang']);
 					} else {
 						var_dump($this->user_model->get_keranjang());
-						if(!is_null($this->user_model->get_keranjang())) 
+						if(!is_null($this->user_model->get_keranjang()[0])) 
 							$last_id_keranjang = (int)substr(end($this->user_model->get_keranjang())['id_keranjang'], 1);
 						else $last_id_keranjang = 0;
 						$new_id_keranjang = 'K'. sprintf("%04d", $last_id_keranjang+1);
 						$this->user_model->add_keranjang($new_id_keranjang, $_SESSION['id_user']);
 						$this->user_model->add_detail_keranjang($new_id_keranjang, $barang['id_barang']);
 					}
+					$this->session->set_flashdata('addToCart', "success");
+					$this->session->set_flashdata('nama_barang', $barang['nama']);
 					$this->user_model->minus_stok_barang($id);
 				}
 			} else if($_SESSION['salt'] != 'user') {

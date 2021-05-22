@@ -19,10 +19,12 @@ class Home extends CI_Controller {
 		
 		$data['barang'] = $this->barang->ShowData();
 
-		if($_SESSION['salt'] == 'user'){ 
+		if(isset($_SESSION['salt']) && $_SESSION['salt'] == 'user'){ 
 			$this->load->model('user_model');
 			$keranjang = $this->user_model->get_keranjang($_SESSION['id_user']);
-			$data['keranjang'] = $this->user_model->get_detail_keranjang($keranjang[0]['id_keranjang']);
+			if(!is_null($keranjang) && count($keranjang) > 0) {
+				$data['keranjang'] = $this->user_model->get_detail_keranjang($keranjang[0]['id_keranjang']);
+			}
 		}
 
 		if($this->session->flashdata('addToCart') !== null && $this->session->flashdata('nama_barang') !== null) {
@@ -47,7 +49,7 @@ class Home extends CI_Controller {
 
 		$data['barang'] = $this->barang->ShowDetails($id);
 		
-		if($_SESSION['salt'] == 'user'){ 
+		if(isset($_SESSION['salt']) && $_SESSION['salt'] == 'user'){ 
 			$this->load->model('user_model');
 			$keranjang = $this->user_model->get_keranjang($_SESSION['id_user']);
 			$data['keranjang'] = $this->user_model->get_detail_keranjang($keranjang[0]['id_keranjang']);
@@ -55,5 +57,4 @@ class Home extends CI_Controller {
 
 		$this->load->view('pages/detail', $data);
 	}
-
 }
