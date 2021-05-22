@@ -33,7 +33,7 @@
 							?>
 							<h5 class="card-title"><?= $k['nama']?></h5>
 							<p class="card-text"><?= $k['deskripsi']?></p>
-							<p class="card-text">Rp.<?= $k['harga']?></p>
+							<p class="card-text">Rp.<?= $k['harga']?>/day</p>
 							<a href="<?=base_url("index.php/User/DeleteK?id=$id_simpan1&keranjang=$id_simpan2")?>" style="margin-right:10px;color:rgb(0,200,255);">
 							<button class='btn'>
 							<span class='glyphicon glyphicon-remove text-danger'>Delete</span>
@@ -47,13 +47,13 @@
 					<div class="form-group row" style="text-align:center">
                         <label class="col-sm-6 col-form-label" style="text-align:right">Lama Peminjaman :</label>
                         <div class="col-sm-2">
-                            <input type="number" class="form-control" id="lama" name="lama" oninput="calculate()">
+                            <input type="number" class="form-control" value="<?= $keranjang['lama_peminjaman'] ?>" id="lama" name="lama" oninput="calculate()"></input>
                         </div>
                     </div>
 				</div>
 				
 				<div class='col-12' style="text-align:center">
-					<a href="" style="margin-right:10px;color:rgb(0,200,255);" id="konfirmasi">
+					<a href="<?php echo base_url()."index.php/User/tambah12?keranjang=$id_simpan2&lama=1";?>" style="margin-right:10px;color:rgb(0,200,255);" id="konfirmasi">
 					<button class='btn btn-success'>
 					<span class='glyphicon glyphicon-remove'>Konfirmasi</span>
 					</button>
@@ -66,7 +66,12 @@
 			<?php } ?>
 		</div>
 	</section>
-	
+	<div class="alert alert-dismissible fade  <?php if(isset($addToOrder)) echo 'show'; ?> text-white col-lg-3 col-md-5 col-sm-6 col-xs-12 w-100 px-3 m-3" style="background-color: #4CAF50; border: 0;">
+		<p class="mr-3"><i class="fa fa-check-square fa-2x align-middle mr-2"></i> Your cart has been added to order. </p>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
 	<?php echo $footer; ?>
 	<?php echo $script; ?>
 	

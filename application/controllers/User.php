@@ -40,7 +40,7 @@ class User extends CI_Controller{
 				$keranjang = $this->user_model->get_keranjang();
 				if($barang['stok'] >= 1 ) {
 					// Data keranjang kosong, otomatis bikin ID baru dari K0001
-					if(is_null($keranjang)) {
+					if(is_null($keranjang[0])) {
 						$new_id_keranjang = 'K'. sprintf("%04d", 1);
 						$this->user_model->add_keranjang($new_id_keranjang, $_SESSION['id_user']);
 						$this->user_model->add_detail_keranjang($new_id_keranjang, $barang['id_barang']);
@@ -54,8 +54,7 @@ class User extends CI_Controller{
 							if($k['status_barang'] == 'Gantung') {
 								$this->user_model->add_detail_keranjang($k['id_keranjang'], $barang['id_barang']);
 								break;
-							}
-							if($k['status_barang'] == 'Dipesan') $ada_dipesan = TRUE;
+							} else if($k['status_barang'] == 'Dipesan') $ada_dipesan = TRUE;
 							if($index_looping+1 == count($keranjang_user) && $ada_dipesan) {
 								// Status barang = dipesan, artinya bikin data keranjang baru dengan ID baru
 								if($k['status_barang'] == 'Dipesan') {
@@ -91,7 +90,6 @@ class User extends CI_Controller{
 			foreach($keranjang as $k) {
                 if($k['status_barang'] == 'Gantung' && !is_null($k) && count($k) > 0) {
                     $data['keranjang'] = $k;
-    
                     $detail_keranjang = $this->user_model->get_detail_keranjang($k['id_keranjang']);
                     $index = 0;
                     foreach($detail_keranjang as $d) {
@@ -107,6 +105,11 @@ class User extends CI_Controller{
 			$data['script'] = $this->load->view('include/script',NULL,TRUE);
 			$data['navbar'] = $this->load->view('template/navbar',$title,TRUE);
 			$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
+
+			if($this->session->flashdata('addToOrder') !== null) {
+				$data['addToCart'] = $this->session->flashdata('addToOrder'); 
+				unset($_SESSION['addToOrder']);
+			}
 
 			$this->load->view('pages/keranjang', $data);
 		} else redirect(base_url('index.php/login'));
@@ -124,6 +127,10 @@ class User extends CI_Controller{
 		
 		$this->user_model->changeLama($keranjang,$lama);
 		$this->user_model->add_order($new_id_order,$keranjang);
+		$this->session->set_flashdata('addToOrder', "success");
+
+		
+
 		redirect(base_url('index.php/user/cart'));
 	}	
 	public function DeleteK(){
