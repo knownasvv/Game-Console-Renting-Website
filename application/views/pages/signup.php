@@ -9,7 +9,9 @@
     <?= $loginStyle ?>
 </head>
 
-<body>
+<body style="
+		background: url(<?php echo base_url('assets/images/background/home.jpg')?>) no-repeat fixed center; 
+		background-size: cover; margin-bottom:240px;" >
     <!-- <div class="form-group">    
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" name="email" required class="form-control" placeholder="Enter email" value="<?= set_value('email') ?>">
