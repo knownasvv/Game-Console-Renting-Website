@@ -6,17 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<?php echo $style; ?>
 	<style>
-		ul > li{margin-right:25px;font-weight:lighter;cursor:pointer}
-		li.active{border-bottom:3px solid silver;}
-		.item-photo{display:flex;justify-content:center;align-items:center;border-right:1px solid #f6f6f6;}
-		.menu-items{list-style-type:none;font-size:11px;display:inline-flex;margin-bottom:0;margin-top:20px}
 		.btn-success{width:100%;border-radius:0;}
-		.section{width:100%;margin-left:-15px;padding:2px;padding-left:15px;padding-right:15px;background:#f8f9f9}
-		.title-price{margin-top:30px;margin-bottom:0;color:black}
-		.title-attr{margin-top:0;margin-bottom:0;color:black;}
-		div.section > div {width:100%;display:inline-flex;}
-		div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-right:5px;max-width:18%;text-align:center;}
-		.attr,.attr2{cursor:pointer;margin-right:5px;font-size:0.9rem;padding:2px;}
+		.attr,.attr2{cursor:pointer;;font-size:0.9rem;}
 
 	</style>
 </head>
@@ -26,10 +17,10 @@
 		background-size: cover;">
 	
 	<?php echo $navbar; ?>
-	<section id="home" class="bg-white">
+	<section id="home">
 		<?php foreach($barang as $b) { ?>
-		<div class="container-fluid p-5">
-        	<div class="row justify-content-center">
+		<div class="container p-5" style="background: rgba(255,255,255,0.9);">
+        	<div class="row justify-content-center py-5">
                <div class="col-lg-4 item-photo">
                     <img style="max-width:100%;" src="<?php echo base_url('assets/images/konsol/'.$b['gambar'])?>" />
                 </div>
@@ -41,7 +32,7 @@
                     <subtitle> <?php echo ucwords($b['kategori'])?></subtitle>
 
 					<!-- PRICE -->
-                    <h6 class="title-price"><small>PRICE</small></h6>
+                    <h6 class="title-price mt-3"><small>PRICE</small></h6>
                     <h3>Rp <?php echo number_format($b['harga'], 2);?>/day</h3>
 
 					<!-- STOCK -->
