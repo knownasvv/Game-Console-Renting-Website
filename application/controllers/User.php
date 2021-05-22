@@ -37,8 +37,8 @@ class User extends CI_Controller{
 			if($_SESSION['salt'] == 'user') {
 				$barang = $this->user_model->get_barang($id)[0];
 				$keranjang_user = $this->user_model->get_keranjang($_SESSION['id_user']);
-				if($barang['stok'] >= 1) {
-					if(!is_null($keranjang_user[0])){
+				if($barang['stok'] >= 1 ) {
+					if(!is_null($keranjang_user[0]) && $keranjang_user[0]['status_barang'] == 'Gantung'){
 						$this->user_model->add_detail_keranjang($keranjang_user[0]['id_keranjang'], $barang['id_barang']);
 					} else {
 						var_dump($this->user_model->get_keranjang());
@@ -64,17 +64,18 @@ class User extends CI_Controller{
 	public function cart() {
 		if($_SESSION['salt'] == 'user') {
 			$keranjang = $this->user_model->get_keranjang($_SESSION['id_user']);
-			if(!is_null($keranjang) && count($keranjang) > 0) {
-				$keranjang = $keranjang[0];
-				$data['keranjang'] = $keranjang;
-
-				$detail_keranjang = $this->user_model->get_detail_keranjang($keranjang['id_keranjang']);
-				$index = 0;
-				foreach($detail_keranjang as $d) {
-					$data['isi_keranjang'][$index] = $this->user_model->get_barang($d['id_barang']);
-					$index++;
-				}				
-			}
+			foreach($keranjang as $k) {
+                if($k['status_barang'] == 'Gantung' && !is_null($k) && count($k) > 0) {
+                    $data['keranjang'] = $k;
+    
+                    $detail_keranjang = $this->user_model->get_detail_keranjang($k['id_keranjang']);
+                    $index = 0;
+                    foreach($detail_keranjang as $d) {
+                        $data['isi_keranjang'][$index] = $this->user_model->get_barang($d['id_barang']);
+                        $index++;
+                    }                
+                }
+            }
 			$data['title'] = "User Cart";
 			$title['title'] = $data['title'];
 

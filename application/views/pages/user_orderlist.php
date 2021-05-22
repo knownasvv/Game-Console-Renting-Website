@@ -14,8 +14,8 @@ style="
 	<?php
 		$cek=false;
         foreach($user as $row){ //user
-			$nama = $row['nama'];
-			if($nama==$_SESSION['name']){
+			$id_user = $row['id_user'];
+			if($id_user==$_SESSION['id_user']){
 				$id_u=$row['id_user'];
 				echo '<div class="container">';
 				echo '<div class="row" style="background-color:rgba(255,255,255, 0.9);padding-top:10px;padding-bottom:10px;border-radius:10px;">';
@@ -93,10 +93,7 @@ style="
 			echo "</div>";
 		}
 
-		//pembuatan tabel
-		
-			
-		
+
 	?>
 
 </body>

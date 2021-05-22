@@ -13,11 +13,11 @@
 	</style>
 </head>
 <body
-	style="
+style="
 		background: url(<?php echo base_url('assets/images/background/home.jpg')?>) no-repeat fixed center; 
-		background-size: cover;">
+		background-size: cover; margin-bottom:240px;" >
 	
-	<?php echo $navbar; ?>
+	<?php echo $navbar; ?> 
 	
 	<div class="container pb-3 pt-5 my-3 align-middle" style="background-color: rgba(241,241,241,0.85);">
 		<h1 class="text-center">LIST BARANG</h1>
@@ -25,6 +25,7 @@
 			<div class="col-md-12"> <?php echo $crud['output']; ?> </div>
 		</div>
 	</div>
+	
 
 </body>
 </html>

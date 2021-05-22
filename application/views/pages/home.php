@@ -97,9 +97,14 @@
 																					<!-- Cek keranjang user -->
 																					<?php 
 																						$sudah_dipesan = FALSE;
-																						if(isset($keranjang)) {
-																							foreach($keranjang as $k) {
-																								if($k['id_barang'] == $b2['id_barang']) $sudah_dipesan = TRUE;
+																						
+																						if(isset($detail_keranjang)) {
+																							foreach($detail_keranjang as $k) {
+																								foreach($keranjang as $k2){
+																									
+																									if($k['id_barang'] == $b2['id_barang'] && $k['id_keranjang']==$k2['id_keranjang'] && $k2['status_barang']=='Gantung') $sudah_dipesan = TRUE;
+																									
+																								}
 																							} 
 																						}
 																					?>
