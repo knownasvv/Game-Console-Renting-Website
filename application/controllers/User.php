@@ -38,7 +38,6 @@ class User extends CI_Controller{
 				$barang = $this->user_model->get_barang($id)[0];
 				$keranjang_user = $this->user_model->get_keranjang($_SESSION['id_user']);
 				$keranjang = $this->user_model->get_keranjang();
-				var_dump($keranjang_user);
 				if($barang['stok'] >= 1 ) {
 					// Data keranjang kosong, otomatis bikin ID baru dari K0001
 					if(is_null($keranjang)) {
@@ -47,24 +46,31 @@ class User extends CI_Controller{
 						$this->user_model->add_detail_keranjang($new_id_keranjang, $barang['id_barang']);
 					} else {
 						// Data keranjang tidak kosong, dilakukan looping pada keranjang
+						$ada_dipesan = FALSE;
+						$index_looping = 0;
+						$end_looping = count($keranjang_user);
 						foreach($keranjang_user as $k) {
 							// Status barang = gantung, artinya langsung input ke detail keranjang sesuai ID
 							if($k['status_barang'] == 'Gantung') {
 								$this->user_model->add_detail_keranjang($k['id_keranjang'], $barang['id_barang']);
 								break;
 							}
-							// Status barang = dipesan, artinya bikin data keranjang baru dengan ID baru
-							else if($k['status_barang'] == 'Dipesan') {
-								// Dapetin ID keranjang terakhir
-								$last_id_keranjang = (int)substr(end($keranjang)['id_keranjang'], 1);
-								// Bikin ID Keranjang sesuai format
-								$new_id_keranjang = 'K'. sprintf("%04d", $last_id_keranjang+1);
+							if($k['status_barang'] == 'Dipesan') $ada_dipesan = TRUE;
+							if($index_looping == count($keranjang_user) && $ada_dipesan) {
+								// Status barang = dipesan, artinya bikin data keranjang baru dengan ID baru
+								if($k['status_barang'] == 'Dipesan') {
+									// Dapetin ID keranjang terakhir
+									$last_id_keranjang = (int)substr(end($keranjang)['id_keranjang'], 1);
+									// Bikin ID Keranjang sesuai format
+									$new_id_keranjang = 'K'. sprintf("%04d", $last_id_keranjang+1);
 
-								// Input to table keranjang dan detail_keranjang
-								$this->user_model->add_keranjang($new_id_keranjang, $_SESSION['id_user']);
-								$this->user_model->add_detail_keranjang($new_id_keranjang, $barang['id_barang']);
-								break;
-							} 
+									// Input to table keranjang dan detail_keranjang
+									$this->user_model->add_keranjang($new_id_keranjang, $_SESSION['id_user']);
+									$this->user_model->add_detail_keranjang($new_id_keranjang, $barang['id_barang']);
+									break;
+								} 
+							}
+							$index_looping++;
 						}
 					}
 					$this->session->set_flashdata('addToCart', "success");

@@ -21,8 +21,7 @@ class Home extends CI_Controller {
 
 		if(isset($_SESSION['salt']) && $_SESSION['salt'] == 'user'){ 
 			$this->load->model('user_model');
-			$data['keranjang'] = $this->user_model->get_keranjang_where_status_barang_gantung($_SESSION['id_user']);
-			var_dump($data['keranjang']);
+			$data['keranjang'] = $this->user_model->get_keranjang_where_status_barang_gantung($_SESSION['id_user']);		
 			if(!is_null($data['keranjang']) && count($data['keranjang']) > 0) {
 				$data['detail_keranjang'] = $this->user_model->get_detail_keranjang($data['keranjang'][0]['id_keranjang']);
 			}
