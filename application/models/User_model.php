@@ -44,6 +44,9 @@ class User_model extends CI_Model{
 	function add_keranjang($id, $user) {
 		$query = $this->db->query("INSERT INTO keranjang VALUES('$user', '$id', 1, 'Gantung')");
 	}
+    function add_order($id, $idk) {
+		$query = $this->db->query("INSERT INTO orders VALUES('$id', '$idk', 1)");
+	}
     function get_user(){
         $query = $this->db->query("SELECT * FROM users");
         return $query->result_array();
@@ -76,6 +79,17 @@ class User_model extends CI_Model{
         $this->db->set('status_pemesanan', 3);
         $this->db->where('id_order', $id);
         $this->db->update('orders');
+    }
+
+    public function changeLama($id,$lama){
+        $this->db->set('lama_peminjaman', $lama);
+        $this->db->set('status_barang', 'Dipesan');
+        $this->db->where('id_keranjang', $id);
+        $this->db->update('keranjang');
+    }
+
+    public function delete_dosen($id,$keranjang){
+        $this->db->delete('detail_keranjang', array('id_barang' => $id,'id_keranjang' => $keranjang));
     }
 }
 

@@ -56,7 +56,7 @@ class User extends CI_Controller{
 								break;
 							}
 							if($k['status_barang'] == 'Dipesan') $ada_dipesan = TRUE;
-							if($index_looping == count($keranjang_user) && $ada_dipesan) {
+							if($index_looping+1 == count($keranjang_user) && $ada_dipesan) {
 								// Status barang = dipesan, artinya bikin data keranjang baru dengan ID baru
 								if($k['status_barang'] == 'Dipesan') {
 									// Dapetin ID keranjang terakhir
@@ -112,4 +112,25 @@ class User extends CI_Controller{
 		} else redirect(base_url('index.php/login'));
 	}
     
+	public function tambah12(){
+		$keranjang=$_GET['keranjang'];
+		$lama=$_GET['lama'];
+		$order = $this->user_model->get_order();
+		echo $lama;
+		echo $keranjang;
+		// Kalau table order kosong, ID mulai dari 1
+		//if(is_null($order)) $last_id_order = 0;
+		// Kalau table order tidak kosong, dapetin id_order terakhir
+		// else $last_id_order = (int)substr(end($this->user_model->get_order())['id_order'], 1);
+		// $new_id_order = 'R'. sprintf("%04d", $last_id_order+1);
+
+		// $this->user_model->changeLama($keranjang,$lama);
+		// $this->user_model->add_order($new_id_order,$keranjang);
+	}	
+	public function DeleteK(){
+		$id=$_GET['id'];
+		$keranjang=$_GET['keranjang'];
+		$this->user_model->delete_dosen($id,$keranjang);
+		redirect(base_url('index.php/user/cart'));
+	}
 }
