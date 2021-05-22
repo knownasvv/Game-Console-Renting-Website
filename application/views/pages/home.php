@@ -52,83 +52,67 @@
 		<div class="container-fluid">
 			<div class="container">
 				<h5 class="text-center mb-3"><strong> RENTAL </strong></h5><hr>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-								<?php 
-								$index = 1; 
-								$kategori_now = ''; 
-								foreach($barang as $b) {
-								if($kategori_now != $b['kategori']) {
-									$kategori_now = $b['kategori'];?>	
-										<div class="panel panel-default">
-											<div class="panel-heading" role="tab" id="heading<?php echo $index; ?>">
-												<h4 class="panel-title">
-													<a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo "acc".$index; ?>" aria-expanded="true" aria-controls="<?php echo "acc".$index; ?>">
-														<?php echo str_replace('_', ' ', $b['kategori']); ?>
-													</a>
-												</h4>
-											</div>
-											<div id="<?php echo "acc".$index; ?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<?php echo $index; ?>">
-												<div class="panel-body">
-													<div class="container-fluid">
-														<div class="row text-center justify-content-center">
-														<?php foreach($barang as $b2) {
-															if($b2['kategori'] == $b['kategori']) { ?>
-																<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 card m-2 p-0 text-dark" style="width: 18rem; font-weight: 500;">
-																	<img class="card-img-top img-fluid p-3" src="<?php echo base_url("assets/images/konsol/".$b2['gambar'])?>" alt="Gambar <?php echo $b2['nama']?>">
-																	<div class="card-body align-middle p-2">
-																		<p><strong><?php echo $b2['nama'] ?></strong></p>
-																	</div>
-																	<ul class="list-group list-group" style="width: 100%">
-																		<li class="list-group-item">
-																			<p>Rp <?php echo number_format($b2['harga'], 2);?>/day</p>
-																			<p><small>Stock <?php echo $b2['stok'];?></small></p>
-																		</li>
-																		<li class="list-group-item mb-2">
-																			<div class="row text-center">
-																				<span class="col mb-1">
-																					<a href="<?php echo base_url('index.php/home/detail/'.$b2['id_barang'])?>">
-																						<button class="btn btn-outline-dark w-100" style="border-radius: 0;">Detail</button>
-																					</a>
-																				</span>
-																				<span class="col">
-																					<!-- Cek keranjang user -->
-																					<?php 
-																						$sudah_dipesan = FALSE;
-																						if(isset($detail_keranjang))
-																							foreach($detail_keranjang as $k) {
-																								if($k['id_barang'] == $b2['id_barang']) $sudah_dipesan = TRUE;
-																							}
-																					?>
-																					<!-- Barang sudah di keranjang -->
-																					<?php if($sudah_dipesan) { ?>
-																						<button class="btn btn-success w-100 disabled" style="border-radius: 0;">In Cart</button>
-																					<?php } else if($b2['stok'] > 0) {?>
-																						<!-- Ada stok barang -->
-																						<a href="<?= base_url('index.php/user/addToCart/'.$b2['id_barang']);?>">
-																							<button class="btn btn-outline-success w-100" style="border-radius: 0;">Add to cart</button>
-																						</a>
-																					<!-- No stok -->
-																					<?php } else if($b2['stok'] <= 0) {?>
-																						<button class="btn btn-danger w-100 disabled" style="border-radius: 0;">Out of stock</button>
-																					<?php } ?>
-																				</span>
-																			</div>
-																		</li>
-																	</ul>
-																</div>
-															<?php }} ?>
-														</div>
-													</div>
+				<div class="panel-group w-100" id="accordion" role="tablist" aria-multiselectable="true">
+					<?php $index = 1; $kategori_now = ''; 
+					foreach($barang as $b) {
+					if($kategori_now != $b['kategori']) { 
+						$kategori_now = $b['kategori'];?>	
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="heading<?php echo $index; ?>">
+							<h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo "acc".$index; ?>" aria-expanded="true" aria-controls="<?php echo "acc".$index; ?>">
+								<?php echo str_replace('_', ' ', $b['kategori']); ?>
+							</a></h4>
+						</div>
+						<div id="<?php echo "acc".$index; ?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<?php echo $index; ?>">
+							<div class="panel-body">
+								<div class="row text-center justify-content-center">
+								<?php foreach($barang as $b2) { if($b2['kategori'] == $b['kategori']) { ?>
+									<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 card m-2 p-0 text-dark" style="width: 18rem; font-weight: 500;">
+										<img class="card-img-top img-fluid p-3" src="<?php echo base_url("assets/images/konsol/".$b2['gambar'])?>" alt="Gambar <?php echo $b2['nama']?>">
+										<div class="card-body align-middle p-2"><strong><?php echo $b2['nama'] ?></strong></div>
+										<ul class="list-group list-group" style="width: 100%">
+											<li class="list-group-item">
+												<p>Rp <?php echo number_format($b2['harga'], 2);?>/day</p>
+												<p><small>Stock <?php echo $b2['stok'];?></small></p>
+											</li>
+											<li class="list-group-item mb-2">
+												<div class="row text-center">
+												<?php if($_SESSION['salt'] == 'admin') { ?>
+													<!-- Kalau yang login admin tidak ada tombol order -->
+													<span class="col mb-12"><a href="<?php echo base_url('index.php/home/detail/'.$b2['id_barang'])?>">
+														<button class="btn btn-outline-dark w-100" style="border-radius: 0;">Detail</button>
+													</a></span>
+												<?php } else {?>
+													<span class="col mb-1">
+														<a href="<?php echo base_url('index.php/home/detail/'.$b2['id_barang'])?>">
+															<button class="btn btn-outline-dark w-100" style="border-radius: 0;">Detail</button>
+														</a>
+													</span>
+													<span class="col">
+														<!-- Cek keranjang user -->
+														<?php 
+															$sudah_dipesan = FALSE;
+															if(isset($detail_keranjang)) foreach($detail_keranjang as $k) if($k['id_barang'] == $b2['id_barang']) $sudah_dipesan = TRUE;
+														?>
+														
+														<!-- Barang sudah di keranjang -->
+														<?php if($sudah_dipesan) { ?><button class="btn btn-success w-100 disabled" style="border-radius: 0;">In Cart</button>
+														<!-- Ada stok barang -->
+														<?php } else if($b2['stok'] > 0) {?><a href="<?= base_url('index.php/user/addToCart/'.$b2['id_barang']);?>"><button class="btn btn-outline-success w-100" style="border-radius: 0;">Add to cart</button></a>
+														<!-- No stok -->
+														<?php } else if($b2['stok'] <= 0) {?><button class="btn btn-danger w-100 disabled" style="border-radius: 0;">Out of stock</button><?php } ?>
+													</span>
+												<?php } ?>
 												</div>
-											</div>
-										</div>
-								<?php $index++; }} ?>
+											</li>
+										</ul>
+									</div>
+									<?php }} ?>
+								</div>
 							</div>
 						</div>
 					</div>
+					<?php $index++; }} ?>
 				</div>
 			</div>
 		</div>

@@ -63,13 +63,16 @@ class User extends CI_Controller{
 									$last_id_keranjang = (int)substr(end($keranjang)['id_keranjang'], 1);
 									// Bikin ID Keranjang sesuai format
 									$new_id_keranjang = 'K'. sprintf("%04d", $last_id_keranjang+1);
-
 									// Input to table keranjang dan detail_keranjang
 									$this->user_model->add_keranjang($new_id_keranjang, $_SESSION['id_user']);
 									$this->user_model->add_detail_keranjang($new_id_keranjang, $barang['id_barang']);
 									break;
-								} 
+								}
 							}
+							// Dapetin ID keranjang terakhir
+							$last_id_order = (int)substr(end($$this->user_model->get_order())['id_order'], 1);
+							// Bikin ID Keranjang sesuai format
+							$new_id_order = 'R'. sprintf("%04d", $last_id_order+1);
 							$index_looping++;
 						}
 					}
@@ -134,3 +137,4 @@ class User extends CI_Controller{
 		redirect(base_url('index.php/user/cart'));
 	}
 }
+
