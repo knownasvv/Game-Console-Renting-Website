@@ -17,9 +17,9 @@ style="
 			$id_user = $row['id_user'];
 			if($id_user==$_SESSION['id_user']){
 				$id_u=$row['id_user'];
-				echo '<div class="container">';
-				echo '<div class="row" style="background-color:rgba(255,255,255, 0.9);padding-top:10px;padding-bottom:10px;border-radius:10px;">';
 				foreach($keranjang as $row1){ // keranjang
+					echo '<div class="container">';
+					echo '<div class="row mb-4" style="background-color:rgba(255,255,255, 0.9);padding-top:10px;padding-bottom:10px;border-radius:10px;">';
 					if($id_u == $row1['id_user'] && $row1['status_barang']=='Dipesan'){
 						$cek=true;
 						$id_k=$row1['id_keranjang'];
@@ -58,39 +58,41 @@ style="
 							}
 						}
 					}
-				}
-				if($cek==true){
-					echo "<div class='col-12'><hr></div>";
-					echo "<b class='col-12' style='text-align:center'>ID Order : $id_o</b>";
-					echo "<b class='col-12' style='text-align:center'>Lama Peminjaman : $lama_peminjaman hari</b>";
-					echo "<div class='col-12' style='text-align:center'>Status : </div>";
-					if($status==2){
-						echo "<div class='col-12' style='text-align:center'>";
-						echo "<a href='".base_url("index.php/user/change?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
-						echo "<button class='btn btn-success'>";
-						echo "<span>Siap di Pick-up</span>";
-						echo "</button>";
-						echo "</a>";
+					if($cek==true){
+						echo "<div class='col-12'><hr></div>";
+						echo "<b class='col-12' style='text-align:center'>ID Order : $id_o</b>";
+						echo "<b class='col-12' style='text-align:center'>Lama Peminjaman : $lama_peminjaman hari</b>";
+						echo "<div class='col-12' style='text-align:center'>Status : </div>";
+						if($status==2){
+							echo "<div class='col-12' style='text-align:center'>";
+							echo "<a href='".base_url("index.php/user/change?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
+							echo "<button class='btn btn-success'>";
+							echo "<span>Siap di Pick-up</span>";
+							echo "</button>";
+							echo "</a>";
+							echo "</div>";
+						}else if($status==1){
+							echo "<div class='col-12' style='text-align:center'>";
+							echo "<p> Barang belum dikirim </p>";
+							echo "</div>";
+						}else if($status==3){
+							echo "<div class='col-12' style='text-align:center'>";
+							echo "<p style='color:blue'> Barang telah siap diambil </p>";
+							echo "</div>";
+						}else if($status==4){
+							echo "<div class='col-12' style='text-align:center'>";
+							echo "<p style='color:green'> Transaksi telah selesai </p>";
+							echo "</div>";
+						}
 						echo "</div>";
-					}else if($status==1){
-						echo "<div class='col-12' style='text-align:center'>";
-						echo "<p> Barang belum dikirim </p>";
 						echo "</div>";
-					}else if($status==3){
-						echo "<div class='col-12' style='text-align:center'>";
-						echo "<p style='color:blue'> Barang telah siap diambil </p>";
+					}else{
+						echo "<div class='col-12' style='text-align:center'> ~ User Belum Memesan Barang ~ </div>";
 						echo "</div>";
-					}else if($status==4){
-						echo "<div class='col-12' style='text-align:center'>";
-						echo "<p style='color:green'> Transaksi telah selesai </p>";
 						echo "</div>";
 					}
-				}else{
-					echo "<div class='col-12' style='text-align:center'> ~ User Belum Memesan Barang ~ </div>";
 				}
 			}
-			echo "</div>";
-			echo "</div>";
 		}
 
 

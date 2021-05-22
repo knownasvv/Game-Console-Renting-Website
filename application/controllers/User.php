@@ -63,16 +63,13 @@ class User extends CI_Controller{
 									$last_id_keranjang = (int)substr(end($keranjang)['id_keranjang'], 1);
 									// Bikin ID Keranjang sesuai format
 									$new_id_keranjang = 'K'. sprintf("%04d", $last_id_keranjang+1);
+
 									// Input to table keranjang dan detail_keranjang
 									$this->user_model->add_keranjang($new_id_keranjang, $_SESSION['id_user']);
 									$this->user_model->add_detail_keranjang($new_id_keranjang, $barang['id_barang']);
 									break;
-								}
+								} 
 							}
-							// Dapetin ID keranjang terakhir
-							$last_id_order = (int)substr(end($$this->user_model->get_order())['id_order'], 1);
-							// Bikin ID Keranjang sesuai format
-							$new_id_order = 'R'. sprintf("%04d", $last_id_order+1);
 							$index_looping++;
 						}
 					}
@@ -119,16 +116,15 @@ class User extends CI_Controller{
 		$keranjang=$_GET['keranjang'];
 		$lama=$_GET['lama'];
 		$order = $this->user_model->get_order();
-		echo $lama;
-		echo $keranjang;
 		// Kalau table order kosong, ID mulai dari 1
-		//if(is_null($order)) $last_id_order = 0;
+		if(is_null($order)) $last_id_order = 0;
 		// Kalau table order tidak kosong, dapetin id_order terakhir
-		// else $last_id_order = (int)substr(end($this->user_model->get_order())['id_order'], 1);
-		// $new_id_order = 'R'. sprintf("%04d", $last_id_order+1);
-
-		// $this->user_model->changeLama($keranjang,$lama);
-		// $this->user_model->add_order($new_id_order,$keranjang);
+		else $last_id_order = (int)substr(end($order)['id_order'], 1);
+		$new_id_order = 'R'. sprintf("%04d", $last_id_order+1);
+		
+		$this->user_model->changeLama($keranjang,$lama);
+		$this->user_model->add_order($new_id_order,$keranjang);
+		redirect(base_url('index.php/user/cart'));
 	}	
 	public function DeleteK(){
 		$id=$_GET['id'];
@@ -137,4 +133,3 @@ class User extends CI_Controller{
 		redirect(base_url('index.php/user/cart'));
 	}
 }
-
