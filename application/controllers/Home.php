@@ -25,8 +25,6 @@ class Home extends CI_Controller {
 			if(!is_null($data['keranjang']) && count($data['keranjang']) > 0) {
 				$data['detail_keranjang'] = $this->user_model->get_detail_keranjang($data['keranjang'][0]['id_keranjang']);
 			}
-		} else if(isset($_SESSION['salt']) && $_SESSION['salt'] == 'admin') {
-			
 		}
 
 		if($this->session->flashdata('addToCart') !== null && $this->session->flashdata('nama_barang') !== null) {

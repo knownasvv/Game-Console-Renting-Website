@@ -56,20 +56,23 @@ class User extends CI_Controller{
 								break;
 							}
 							if($k['status_barang'] == 'Dipesan') $ada_dipesan = TRUE;
-							if($index_looping == count($keranjang_user) && $ada_dipesan) {
+							if($index_looping+1 == count($keranjang_user) && $ada_dipesan) {
 								// Status barang = dipesan, artinya bikin data keranjang baru dengan ID baru
 								if($k['status_barang'] == 'Dipesan') {
 									// Dapetin ID keranjang terakhir
 									$last_id_keranjang = (int)substr(end($keranjang)['id_keranjang'], 1);
 									// Bikin ID Keranjang sesuai format
 									$new_id_keranjang = 'K'. sprintf("%04d", $last_id_keranjang+1);
-
 									// Input to table keranjang dan detail_keranjang
 									$this->user_model->add_keranjang($new_id_keranjang, $_SESSION['id_user']);
 									$this->user_model->add_detail_keranjang($new_id_keranjang, $barang['id_barang']);
 									break;
-								} 
+								}
 							}
+							// Dapetin ID keranjang terakhir
+							$last_id_order = (int)substr(end($$this->user_model->get_order())['id_order'], 1);
+							// Bikin ID Keranjang sesuai format
+							$new_id_order = 'R'. sprintf("%04d", $last_id_order+1);
 							$index_looping++;
 						}
 					}
@@ -113,3 +116,4 @@ class User extends CI_Controller{
 	}
     
 }
+
