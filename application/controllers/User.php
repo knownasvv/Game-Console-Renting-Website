@@ -63,16 +63,18 @@ class User extends CI_Controller{
 
 	public function cart() {
 		if($_SESSION['salt'] == 'user') {
-			$keranjang = $this->user_model->get_keranjang($_SESSION['id_user'])[0];
-			$data['keranjang'] = $keranjang;
+			$keranjang = $this->user_model->get_keranjang($_SESSION['id_user']);
+			if(!is_null($keranjang) && count($keranjang) > 0) {
+				$keranjang = $keranjang[0];
+				$data['keranjang'] = $keranjang;
 
-			$detail_keranjang = $this->user_model->get_detail_keranjang($keranjang['id_keranjang']);
-			$index = 0;
-			foreach($detail_keranjang as $d) {
-				$data['isi_keranjang'][$index] = $this->user_model->get_barang($d['id_barang']);
-				$index++;
+				$detail_keranjang = $this->user_model->get_detail_keranjang($keranjang['id_keranjang']);
+				$index = 0;
+				foreach($detail_keranjang as $d) {
+					$data['isi_keranjang'][$index] = $this->user_model->get_barang($d['id_barang']);
+					$index++;
+				}				
 			}
-
 			$data['title'] = "User Cart";
 			$title['title'] = $data['title'];
 
@@ -82,7 +84,7 @@ class User extends CI_Controller{
 			$data['footer'] = $this->load->view('template/footer', NULL, TRUE);
 
 			$this->load->view('pages/keranjang', $data);
-		}
+		} else redirect(base_url('index.php/login'));
 	}
     
 }

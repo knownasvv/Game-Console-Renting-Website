@@ -14,8 +14,10 @@
 	<?php echo $navbar; ?>
 	<section id="home">
 		<div class="container-fluid text-center py-5">
+
+			<?php if(isset($isi_keranjang)) {?>
 			<div class="card mb-3" style="max-width: 540px;">
-				<?php if(isset($isi_keranjang)) foreach($isi_keranjang as $k) {$k = $k[0]?>
+				<?php foreach($isi_keranjang as $k) {$k = $k[0]?>
 					<div class="row no-gutters">
 						<div class="col-md-4">
 						<img src="<?= base_url('assets/images/konsol/'.$k['gambar'])?>" class="card-img" alt="Gambar <?= $k['nama']?>">
@@ -30,9 +32,11 @@
 					</div>
 				<?php }?>
 			</div>
+			<?php } else { ?>
+				<h2 class="bg-white"> Your cart is empty. </h2>
+			<?php } ?>
 		</div>
 	</section>
-	
 	<?php echo $footer; ?>
 	<?php echo $script; ?>
 </body>
