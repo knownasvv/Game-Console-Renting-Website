@@ -14,61 +14,52 @@ style="
 	<?php
 		$cek=false;
         foreach($user as $row){ //user
-			$nama = $row['nama'];
-			if($nama==$_SESSION['name']){
+			$id_user = $row['id_user'];
+			if($id_user==$_SESSION['id_user']){
 				$id_u=$row['id_user'];
 				echo '<div class="container">';
 				echo '<div class="row" style="background-color:rgba(255,255,255, 0.9);padding-top:10px;padding-bottom:10px;border-radius:10px;">';
-				if($keranjang) {
-					foreach($keranjang as $row1){ // keranjang
-						if($id_u == $row1['id_user']){
-							$id_k=$row1['id_keranjang'];
-							$lama_peminjaman = $row1['lama_peminjaman'];
-							$count=0;
-							foreach($detail as $row2){ //detail
-								if($id_k == $row2['id_keranjang']){
-									$id_b = $row2['id_barang'];
-									$count++;
-									foreach($barang as $row3){ //barang
-										if($id_b==$row3['id_barang']){
-											$nama_b=$row3['nama'];
-											$desk=$row3['deskripsi'];
-											$gambar=$row3['gambar'];
-											$harga=$row3['harga'];
-										}
+				foreach($keranjang as $row1){ // keranjang
+					if($id_u == $row1['id_user'] && $row1['status_barang']=='Dipesan' ){
+						$cek=true;
+						$id_k=$row1['id_keranjang'];
+						$lama_peminjaman = $row1['lama_peminjaman'];
+						$count=0;
+						foreach($detail as $row2){ //detail
+							if($id_k == $row2['id_keranjang']){
+								$id_b = $row2['id_barang'];
+								$count++;
+								foreach($barang as $row3){ //barang
+									if($id_b==$row3['id_barang']){
+										$nama_b=$row3['nama'];
+										$desk=$row3['deskripsi'];
+										$gambar=$row3['gambar'];
+										$harga=$row3['harga'];
 									}
-									echo "<div class='col-1'>$count</div>";
-									echo '<div class="col-2" style="padding:0">';
-										echo "<img src='http://localhost/UAS_Teori/assets/images/konsol/$gambar' width='200px' height='200px'>";
-									echo "</div>";
-									echo '<div class="col-9 align-middle">';
-										echo "<h5 style='font-weight:bold'>$nama_b</h5>";
-										echo "<p>$desk</p>";
-										echo "<p>Harga Rental : Rp.$harga</p>";
-									echo "</div>";
-									echo "<div class='col-12'><br></div>";
 								}
-								$base=base_url("/assets/images/konsol/$gambar");
-								
-								echo "<div class='col-1'>$count</div>";
-								echo '<div class="col-2" style="padding:0">';
-									echo "<img src='$base' width='200px' height='200px'>";
-								echo "</div>";
-								echo '<div class="col-9 align-middle">';
-									echo "<h5 style='font-weight:bold'>$nama_b</h5>";
-									echo "<p>$desk</p>";
-									echo "<p>Harga Rental : Rp.$harga</p>";
-								echo "</div>";
-								echo "<div class='col-12'><br></div>";
 							}
-							foreach($order as $row4){ //order
-								if($id_k==$row4['id_keranjang']){
-									$id_o=$row4['id_order'];
-									$status=$row4['status_pemesanan'];
-								}
+							$base=base_url("/assets/images/konsol/$gambar");
+							
+							echo "<div class='col-1'>$count</div>";
+							echo '<div class="col-2" style="padding:0">';
+								echo "<img src='$base' width='200px' height='200px'>";
+							echo "</div>";
+							echo '<div class="col-9 align-middle">';
+								echo "<h5 style='font-weight:bold'>$nama_b</h5>";
+								echo "<p>$desk</p>";
+								echo "<p>Harga Rental : Rp.$harga</p>";
+							echo "</div>";
+							echo "<div class='col-12'><br></div>";
+						}
+						foreach($order as $row4){ //order
+							if($id_k==$row4['id_keranjang']){
+								$id_o=$row4['id_order'];
+								$status=$row4['status_pemesanan'];
 							}
 						}
 					}
+				}
+				if($cek==true){
 					echo "<div class='col-12'><hr></div>";
 					echo "<b class='col-12' style='text-align:center'>ID Order : $id_o</b>";
 					echo "<b class='col-12' style='text-align:center'>Lama Peminjaman : $lama_peminjaman hari</b>";
@@ -94,6 +85,8 @@ style="
 						echo "<p style='color:green'> Transaksi telah selesai </p>";
 						echo "</div>";
 					}
+				}else{
+					echo "<div class='col-12' style='text-align:center'> ~ User Belum Memesan Barang ~ </div>";
 				}
 			}
 			echo "</div>";
