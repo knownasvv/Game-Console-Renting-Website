@@ -25,6 +25,10 @@ class User_model extends CI_Model{
 	function add_detail_keranjang($id_keranjang, $id_barang) {
 		$this->db->query("INSERT INTO detail_keranjang VALUES('$id_keranjang', '$id_barang')");
 	}
+    function get_detail(){
+        $query = $this->db->query("SELECT * FROM detail_keranjang");
+        return $query->result_array();
+    }
     function get_keranjang($id_user = null){
         if($id_user == null) $query = $this->db->query("SELECT * FROM keranjang ORDER BY id_keranjang ASC");
         else $query = $this->db->query("SELECT * FROM keranjang WHERE id_user = '$id_user' ORDER BY id_keranjang ASC");
@@ -32,7 +36,7 @@ class User_model extends CI_Model{
         return $query->result_array();
     }
 	function add_keranjang($id, $user) {
-		$query = $this->db->query("INSERT INTO keranjang VALUES('$user', '$id', 1, 'Dipesan')");
+		$query = $this->db->query("INSERT INTO keranjang VALUES('$user', '$id', 1, 'Gantung')");
 	}
     function get_user(){
         $query = $this->db->query("SELECT * FROM users");
