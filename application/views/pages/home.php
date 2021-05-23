@@ -77,7 +77,7 @@
 											</li>
 											<li class="list-group-item mb-2">
 												<div class="row text-center">
-												<?php if($_SESSION['salt'] == 'admin') { ?>
+												<?php if(isset($_SESSION['salt']) == 'admin') { ?>
 													<!-- Kalau yang login admin tidak ada tombol order -->
 													<span class="col mb-12"><a href="<?php echo base_url('index.php/home/detail/'.$b2['id_barang'])?>">
 														<button class="btn btn-outline-dark w-100" style="border-radius: 0;">Detail</button>
