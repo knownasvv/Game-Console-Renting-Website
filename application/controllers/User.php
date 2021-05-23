@@ -17,10 +17,11 @@ class User extends CI_Controller{
 		$data['style'] = $this->load->view('include/style',NULL,TRUE);
         $data['script'] = $this->load->view('include/script',NULL,TRUE);
         $data['navbar'] = $this->load->view('template/navbar',$title,TRUE);
+		$data['footer'] = $this->load->view('template/footer', NULL,TRUE);
 		$data['order'] = $this->user_model->get_order();
         $data['user'] = $this->user_model->get_user();
         $data['keranjang'] = $this->user_model->get_keranjang();
-        $data['detail'] = $this->user_model->get_detail_keranjang();
+        $data['detail_keranjang'] = $this->user_model->get_detail_keranjang();
         $data['barang'] = $this->user_model->get_barang();
 		$this->load->view('pages/user_orderlist.php',$data);
 	}
@@ -93,7 +94,7 @@ class User extends CI_Controller{
                     $detail_keranjang = $this->user_model->get_detail_keranjang($k['id_keranjang']);
                     $index = 0;
                     foreach($detail_keranjang as $d) {
-                        $data['isi_keranjang'][$index] = $this->user_model->get_barang($d['id_barang']);
+                        $data['detail_keranjang'][$index] = $this->user_model->get_barang($d['id_barang']);
                         $index++;
                     }                
                 }
@@ -109,6 +110,13 @@ class User extends CI_Controller{
 			if($this->session->flashdata('addToOrder') !== null) {
 				$data['addToCart'] = $this->session->flashdata('addToOrder'); 
 				unset($_SESSION['addToOrder']);
+			}
+			else if($this->session->flashdata('deleteItem') !== null && $this->session->flashdata('deletedItem') !== null) {
+				$data['deleteItem'] = $this->session->flashdata('deleteItem'); 
+				$data['deletedItem'] = $this->session->flashdata('deletedItem'); 
+
+				unset($_SESSION['deleteItem']);
+				unset($_SESSION['deletedItem']);
 			}
 
 			$this->load->view('pages/keranjang', $data);
@@ -137,6 +145,9 @@ class User extends CI_Controller{
 		$id=$_GET['id'];
 		$keranjang=$_GET['keranjang'];
 		$this->user_model->delete_dosen($id,$keranjang);
+		$deletedItem = $this->user_model->get_barang($id)[0]['nama'];
+		$this->session->set_flashdata('deleteItem', "success");
+		$this->session->set_flashdata('deletedItem', $deletedItem);
 		redirect(base_url('index.php/user/cart'));
 	}
 }

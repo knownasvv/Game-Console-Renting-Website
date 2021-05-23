@@ -8,7 +8,9 @@
 	<style>
 		.btn-success{width:100%;border-radius:0;}
 		.attr,.attr2{cursor:pointer;;font-size:0.9rem;}
-
+		
+		.btn-warning{ background: #F7EC59; border: #F7EC59;}
+		.btn-warning:hover { background: #edcb07; border: #edcb07;}
 	</style>
 </head>
 <body
@@ -20,6 +22,7 @@
 	<section id="home">
 		<?php foreach($barang as $b) { ?>
 		<div class="container p-5" style="background: rgba(255,255,255,0.9);">
+		<a href="javascript:history.go(-1)"><button class="btn btn-warning"><i class="fa fa-chevron-left mr-1"></i> Back</button></a>
         	<div class="row justify-content-center py-5">
                <div class="col-lg-4 item-photo">
                     <img style="max-width:100%;" src="<?php echo base_url('assets/images/konsol/'.$b['gambar'])?>" />

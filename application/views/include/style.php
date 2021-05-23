@@ -1,3 +1,4 @@
+<link rel="icon" type="image/png" href="<?= base_url('assets/images/logo/dark_square.png')?>"/>
 <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css"/>
@@ -17,7 +18,11 @@ h1, h2, h3, h4, h5, h6, p, section, body{
 	padding: 0;
 }
 
-body{ margin:0; padding:0; height:100%; }
+body{ 
+	margin:0; padding:0; height:100%; width: 100%;
+	position: relative;
+    min-height: 100%;
+}
 
 header{
 	top: 0px;
@@ -68,13 +73,27 @@ nav.shift a.a-effect:after {
 	z-index: -1;
 }
 nav.shift a.a-effect:hover:after { opacity: 1; visibility: visible; height: 100%; }
+
+@media only screen and (max-width: 768px) { .header-1{ display:none; } }
+@media only screen and (max-width: 465px) { .header-3{ display:none; } }
 </style>
 
 <!-- FOOTER -->
 <style>
 /* Main Footer */
-footer { width: 100%; font-size: 0.7rem; }
-footer .main-footer{ padding: 10px 0;  background: #F7EC59; }
+footer { 
+	bottom: 0;
+    left: 0;
+ 	position: fixed;/* Updated Property */
+    font-size: 0.8em;
+    width:100%;
+}
+@media only screen and (max-width: 767px){
+	footer{
+		position:static;
+	}
+}
+footer { background: #F7EC59; }
 footer ul{ padding-left: 0;  list-style: none; }
 
 /* Footer transparent */

@@ -1,18 +1,18 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<section>
-	<header>
-		<div class="container">
-			<div class="row" style="font-size:1rem">
-				<div class="col-4 text-left m-0">
+<section id="navbar">
+	<header class="p-0">
+		<div class="container p-0">
+			<div class="row text-center justify-content-center m-0 p-0" style="font-size:1rem">
+				<div class="col text-left m-0 p-0 header-1 text-center" style="overflow:hidden;">
 					<i class="fa fa-map-marker" aria-hidden="true"></i>
 					Summarecon Mall Serpong
 				</div>
-				<div class="col-4 text-center m-0">
+				<div class="col text-center m-0 p-0 header=2 text-center" style="overflow:hidden;">
 					<i class="fa fa-phone" aria-hidden="true"></i>
 					(021)6446-0008
 				</div>
-				<div class="col-4 text-right m-0">
-					<i class="fa fa-instagram-square" aria-hidden="true"></i>
+				<div class="col text-right m-0 p-0 header-3 text-center" style="overflow:hidden;"> 
+					<i class="fa fa-instagram" aria-hidden="true"></i>
 					@geekhouse!
 				</div>
 			</div>
@@ -20,8 +20,10 @@
 	</header>
 	<nav class="navbar navbar-expand-md shift" 
 		style="background: linear-gradient(180deg, rgba(52,58,64,0.7822479333530288) 14%, rgba(0,0,0,0.46011908181241246) 56%, rgba(255,255,255,0) 100%);
-		background: <?php 
-		if (isset($title)) if ($title == "Home") echo 'rgba(34,34,34, 0.8) !important; ';
+		<?php 
+		if (isset($title)) {
+			if($title == "Home") echo 'background: rgba(34,34,34, 0.8) !important;';
+		};
 	?> ">
 		<div class="container">
 			<a href="<?php echo base_url();?>" class="navbar-brand d-flex mr-auto"><img src="<?php echo base_url('assets/images/logo/light.png') ?>" alt="Geeks House" height="55rem"></a>
