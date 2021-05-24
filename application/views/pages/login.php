@@ -44,7 +44,7 @@
                         <label> <?= $image ?></label>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="captcha" class="form Control" placeholder="Enter Captcha Here">
+                        <input type="text" name="captcha" required class="form Control" placeholder="Enter Captcha Here">
                     </div>
 					
 					<div class="container-login100-form-btn">
