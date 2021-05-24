@@ -8,8 +8,17 @@ class User_model extends CI_Model{
         $this->load->database();
     }
 
-    function get_order(){
-        $query = $this->db->query("SELECT * FROM orders");
+    function get_order($cek_id_user = null){
+		if($cek_id_user == null) $query = $this->db->query("SELECT * FROM orders");
+		else {
+			$id_user = $_SESSION['id_user'];
+			$this->db->select('*');
+			$this->db->from('orders');
+			$this->db->join('keranjang', 'keranjang.id_keranjang = orders.id_keranjang', 'inner');
+			$this->db->where("keranjang.status_barang", "Dipesan");
+			$this->db->where("keranjang.id_user", $id_user);
+			$query = $this->db->get();
+		}
         return $query->result_array();
     }
     function get_barang($id_barang = null){
@@ -45,7 +54,7 @@ class User_model extends CI_Model{
 		$query = $this->db->query("INSERT INTO keranjang VALUES('$user', '$id', 1, 'Gantung')");
 	}
     function add_order($id, $idk) {
-		$query = $this->db->query("INSERT INTO orders VALUES('$id', '$idk', 1)");
+		 $this->db->query("INSERT INTO orders VALUES('$id', '$idk', 1)");
 	}
     function get_user(){
         $query = $this->db->query("SELECT * FROM users");

@@ -9,8 +9,6 @@
 		.btn-success{width:100%;border-radius:0;}
 		.attr,.attr2{cursor:pointer;;font-size:0.9rem;}
 		
-		.btn-warning{ background: #F7EC59; border: #F7EC59;}
-		.btn-warning:hover { background: #edcb07; border: #edcb07;}
 	</style>
 </head>
 <body

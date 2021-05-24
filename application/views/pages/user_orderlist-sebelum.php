@@ -63,17 +63,18 @@ style="
 						echo "<b class='col-12' style='text-align:center'>ID Order : $id_o</b>";
 						echo "<b class='col-12' style='text-align:center'>Lama Peminjaman : $lama_peminjaman hari</b>";
 						echo "<div class='col-12' style='text-align:center'>Status : </div>";
-						if($status==2){
+						
+						if($status==1){
+							echo "<div class='col-12' style='text-align:center'>";
+							echo "<p> Barang belum dikirim </p>";
+							echo "</div>";
+						else if($status==2){
 							echo "<div class='col-12' style='text-align:center'>";
 							echo "<a href='".base_url("index.php/user/change?id=$id_o")."'style='margin-right:10px;color:rgb(0,200,255);'>";
 							echo "<button class='btn btn-success'>";
 							echo "<span>Siap di Pick-up</span>";
 							echo "</button>";
 							echo "</a>";
-							echo "</div>";
-						}else if($status==1){
-							echo "<div class='col-12' style='text-align:center'>";
-							echo "<p> Barang belum dikirim </p>";
 							echo "</div>";
 						}else if($status==3){
 							echo "<div class='col-12' style='text-align:center'>";

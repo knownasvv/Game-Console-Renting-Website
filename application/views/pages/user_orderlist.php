@@ -41,13 +41,19 @@ style="
 								<div class="panel-heading" role="tab" id="heading<?php echo $index; ?>">
 									<h4 class="panel-title">
 										<a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo "acc".$index; ?>" aria-expanded="true" aria-controls="<?php echo "acc".$index; ?>">
-											<span style="text-transform: capitalize;">Order</span> ID <strong><?= $id_o?></strong> <?php
+										
+											<span style="text-transform: capitalize;">
+											
+											Order</span> ID <strong><?= $id_o?></strong> 
+											
+											<?php
 												$status = $o['status_pemesanan'];
-												if($status == 1) echo "<span class='badge badge-danger' style='text-transform: capitalize'> Sedang Dikirim </span>";
+												if($status == 1) echo "<span class='badge badge-danger' style='text-transform: capitalize'> Belum Dikirim </span>";
 												else if($status == 2) echo "<span class='badge badge-warning' style='text-transform: capitalize'> Sudah Dikirim </span>";
 												else if($status == 3) echo "<span class='badge badge-success' style='text-transform: capitalize'> Siap di Pick-up </span>";
 												else if($status == 4) echo "<span class='badge badge-primary' style='text-transform: capitalize'> Selesai </span>";
-											?>
+											?></span>
+											
 										</a>
 									</h4>
 								</div>
@@ -57,10 +63,15 @@ style="
 											<?php foreach($keranjang as $k) {
 												$id_k = $k['id_keranjang'];
 												if($id_k == $o['id_keranjang']){ ?>
-													<div class="row mb-2">
+													<div class="container pb-4">
 														<h6 class="col-12">Lama peminjaman : <b><?= $k['lama_peminjaman']?> hari</b></h6>
-														<hr/>
+														<?php if($status == 2) { ?>
+																<a class="btn btn-primary mt-3" href="<?= base_url("index.php/user/change?id=$id_o")?>">Siap di Pick-Up</a>
+															<?php }
+														?>
 													</div>
+													<hr/>
+													
 													<?php $count = 1; $total = 0;
 													foreach($detail_keranjang as $dk) {
 														$id_dk = $dk['id_keranjang'];

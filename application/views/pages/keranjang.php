@@ -71,19 +71,27 @@
 				<!-- RIGHT SIDE -->
 				<div class="col-md-4 col-sm-12 order-last right-side pr-0">
 					<div class="bg-white py-3">
+					<?= form_open('User/tambah12');?>
 						<div class='col-12 text-center'>
-							<div class="form-group row">
-								<label class="col-lg-8 col-md-12 col-sm-8 col-form-label text-left">Lama Peminjaman</label>
-								<div class="col-lg-4 col-md-12 col-sm-4">
-									<input type="number" class="form-control" value="<?= $keranjang['lama_peminjaman'] ?>" id="lama" name="lama" oninput="calculate()"></input>
-								</div>
+							<div class="form-group row w-100">
+								<?php echo form_label('Lama Peminjaman', 'lama', ['class'=>'col-lg-8 col-md-12 col-sm-8 text-left']); ?>
+								<?php echo form_input([
+									'name' => 'lama', 
+									'class'=>'form-control col-lg-4 col-md-12 col-sm-4', 
+									'type' => 'number',
+									'id' => 'lama', 
+									'placeholder' => 'Lama',
+									'value' => $keranjang['lama_peminjaman']]); ?>
+								<?php echo form_error('lama');?>
 							</div>
 						</div>
 						<div class='col-12 text-center'>
-							<a href="<?php echo base_url()."index.php/User/tambah12?keranjang=$id_k&lama=1";?>" id="konfirmasi">
-							<button class='btn btn-outline-success'><i class='fa fa-check mr-1'></i> Order</button>
-							</a>
+							<?php echo form_submit('submit', 'Order', [
+								'class' => 'btn btn-outline-success', 
+								'value' => "<i class='fa fa-check'></i>"
+							]);?>
 						</div>
+					<?= form_close(); ?>
 					</div>
 				</div>
 			</div>
@@ -91,12 +99,14 @@
 			<div class="bg-white"><a href='<?php if(isset($deleteItem)) echo base_url(); else echo 'javascript:history.go(-1)';?>'><button class='btn btn-outline-danger w-100'><h5><b>Cart is empty. </b></h5>Press this button to go back.</button></a></div>
 		<?php } ?>
 	</section>
+	<!-- ALERT BOX SUCCESS  -->
 	<div class="alert alert-dismissible fade  <?php if(isset($addToCart)) echo 'show'; ?> text-white col-lg-3 col-md-5 col-sm-6 col-xs-12 w-100 px-3 m-3" style="background-color: #4CAF50; border: 0;">
 		<p class="mr-3"><i class="fa fa-check-square fa-2x align-middle mr-2"></i> Your cart has been submitted as order. </p>
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
+	<!-- ALERT BOX FAIL -->
 	<div class="alert alert-dismissible fade  <?php if(isset($deleteItem)) echo 'show'; ?> text-white col-lg-3 col-md-5 col-sm-6 col-xs-12 w-100 px-3 m-3" style="background-color: #DC3545; border: 0;">
 		<p class="mr-3"><i class="fa fa-remove fa-2x align-middle mr-2"></i> You've deleted<?php if(isset($deletedItem)) echo ' <b>'.$deletedItem.'</b>'; else echo ' an';?>. </p>
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -105,13 +115,5 @@
 	</div>
 	<?= $footer?>
 	<?php echo $script; ?>
-	
-		<script>
-		function calculate(){
-			var lama = document.getElementById("lama").value;
-			
-			document.getElementById("konfirmasi").href="<?php echo base_url()."index.php/User/tambah12?keranjang=$id_simpan2&lama=" ;?>" + lama			
-		}
-		</script>
 </body>
 </html>
