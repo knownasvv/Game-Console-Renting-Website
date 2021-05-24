@@ -8,9 +8,7 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->model('user_model');
         $this->load->helper('captcha');
-        if (!isset($_SESSION)) {
-            session_start();
-        }
+        if (!isset($_SESSION)) session_start();
     }
 
     public function index()
@@ -64,12 +62,12 @@ class Login extends CI_Controller
             $password = $_POST['password'];
             $captcha = $_POST['captcha'];
 
-            $salt = $this->user_model->getSalt($email);
+            $salt = $this->user_model->get_salt($email);
             //cek User
             if (count($salt) != 0) {
                 $salt = $salt[0]['salt'];
                 $password = md5($password . $salt);
-                $cekUser = $this->user_model->getUser($email, $password);
+                $cekUser = $this->user_model->get_user($email, $password);
                 if ($cekUser) {
                     if (strtolower($_SESSION['captcha']) == strtolower($captcha)) {
                         if ($salt == "user") {

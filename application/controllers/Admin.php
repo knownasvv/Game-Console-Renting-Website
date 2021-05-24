@@ -5,16 +5,11 @@ class Admin extends CI_Controller{
     public function __construct() {
 		parent::__construct();
         $this->load->model('admin_model');
-        if(!isset($_SESSION)){ 
-            session_start(); 
-        } 
-        if(!isset($_SESSION['salt'])){
-            redirect(base_url('index.php/login'));
-        }else{
-            if($_SESSION['salt'] != 'admin'){
-                redirect(base_url());
-            }
-        }
+        if(!isset($_SESSION)) session_start(); 
+        if(!isset($_SESSION['salt'])) redirect(base_url('index.php/login'));
+        else if($_SESSION['salt'] != 'admin'){
+			redirect(base_url());
+		}
 	}
 
     public function admin_barang(){
@@ -64,7 +59,7 @@ class Admin extends CI_Controller{
         $data['order'] = $this->admin_model->get_order();
         $data['user'] = $this->admin_model->get_user();
         $data['keranjang'] = $this->admin_model->get_keranjang();
-        $data['detail'] = $this->admin_model->get_detail();
+        $data['detail'] = $this->admin_model->get_detail_keranjang();
         $data['barang'] = $this->admin_model->get_barang();
         $this->load->view('pages/admin_order.php',$data);
     }

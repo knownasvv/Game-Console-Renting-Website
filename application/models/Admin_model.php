@@ -56,6 +56,7 @@
         // public function delete_mahasiswa($id){
         //     $this->db->delete('mahasiswa', array('id_mahasiswa' => $id));
         // }
+		
         public function change2($id){
             $this->db->set('status_pemesanan', 2);
             $this->db->where('id_order', $id);
