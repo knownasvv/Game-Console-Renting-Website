@@ -94,8 +94,8 @@ class User extends CI_Controller{
 					$this->session->set_flashdata('nama_barang', $barang['nama']);
 					$this->user_model->minus_stok_barang($id);
 				}
-		 	} 
-			 else if($_SESSION['salt'] != 'user') {
+			} 
+			else if($_SESSION['salt'] != 'user') {
 				redirect(base_url());
 			}
 		} else redirect(base_url('index.php/login'));
@@ -144,7 +144,6 @@ class User extends CI_Controller{
     
 	public function tambah12(){
 		$keranjang = $this->user_model->get_keranjang_where_status_barang_gantung($_SESSION['id_user'])[0]['id_keranjang'];
-		var_dump($keranjang);
 		$lama = $this->input->post('lama');
 		$order = $this->user_model->get_order();
 		// Kalau table order kosong, ID mulai dari 1
@@ -153,7 +152,7 @@ class User extends CI_Controller{
 		else $last_id_order = (int)substr(end($order)['id_order'], 1);
 		$new_id_order = 'R'. sprintf("%04d", $last_id_order+1);
 		
-		$this->user_model->changeLama($keranjang, $lama);
+		$this->user_model->change_Lama($keranjang, $lama);
 		$this->user_model->add_order($new_id_order,$keranjang);
 		$this->session->set_flashdata('addToOrder', "success");
 
@@ -162,7 +161,7 @@ class User extends CI_Controller{
 	public function DeleteK(){
 		$id=$_GET['id'];
 		$keranjang=$_GET['keranjang'];
-		$this->user_model->delete_dosen($id,$keranjang);
+		$this->user_model->delete_detail_keranjang($id,$keranjang);
 		$deletedItem = $this->user_model->get_barang($id)[0]['nama'];
 		$this->session->set_flashdata('deleteItem', "success");
 		$this->session->set_flashdata('deletedItem', $deletedItem);

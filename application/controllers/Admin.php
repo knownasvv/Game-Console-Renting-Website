@@ -59,7 +59,7 @@ class Admin extends CI_Controller{
         $data['order'] = $this->admin_model->get_order();
         $data['user'] = $this->admin_model->get_user();
         $data['keranjang'] = $this->admin_model->get_keranjang();
-        $data['detail'] = $this->admin_model->get_detail_keranjang();
+        $data['detail'] = $this->admin_model->get_detail();
         $data['barang'] = $this->admin_model->get_barang();
         $this->load->view('pages/admin_order.php',$data);
     }

@@ -28,7 +28,7 @@ class User_model extends CI_Model{
     }
     function get_detail_keranjang($id_keranjang = null){
         if($id_keranjang == null) $query = $this->db->get('detail_keranjang');
-		else $query = $this->db->get_where('barang', array('id_keranjang' => $id_keranjang));
+		else $query = $this->db->get_where('detail_keranjang', array('id_keranjang' => $id_keranjang));
         return $query->result_array();
     }
 	function add_detail_keranjang($id_keranjang, $id_barang) {
@@ -100,7 +100,7 @@ class User_model extends CI_Model{
     }
 
 	function minus_stok_barang($id_barang) {
-		$this->db->set('stok', 	'stok-1');
+		$this->db->set('stok', 'stok-1', FALSE);
 		$this->db->where('id_barang', $id_barang);
 		$this->db->update('barang');
 	}
@@ -128,6 +128,7 @@ class User_model extends CI_Model{
 
     public function get_last_id(){
 		$this->db->select('*');
+		$this->db->from('users');
 		$this->db->order_by('id_user', 'DESC');
 		$this->db->limit(1);
         $query = $this->db->get();
