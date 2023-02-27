@@ -1,8 +1,12 @@
 #############################
-PROJECT UAS - Web Programming
+FINAL PROJECT - Web Programming
 #############################
 
-Website Penyewaan Konsol Permainan
+Game console renting website
+Tech Stack:
+- Laravel
+- MySQL
+- HTML, CSS, JS
 
 ****************
 Anggota kelompok
